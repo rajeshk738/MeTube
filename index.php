@@ -6,7 +6,6 @@
     if (!isset($_GET['page'])) {
         header("location:index.php?page=Home");
     }
-    // hi
 ?>
 
     
