@@ -2,70 +2,86 @@
     require_once("files/main.php"); 
     require_once("files/connection.php");
     require_once("files/Classes/StatusMessage.php");
-    require_once("files/Classes/UserAccount.php");
+    require_once("files/Classes/Account.php");
+    require_once("includes/classes/FormSanitizer.php");
+    require_once("includes/classes/SettingsFormProvider.php");
 
-    $emailResult = false;
-    $userAccount = new UserAccount($con);
-
-    if(isset($_POST["UpdateEmail"])){
-        $email=trim($_POST["email"]);
-        $emailResult=$userAccount->updateEmail($email, $loggedInUserName);
+    if(!User::isLoggedIn()) {
+        header("Location: signIn.php");
     }
-    else if(isset($_POST["UpdatePassword"])){
-        $currentPassword=$_POST["currentpassword"];
-        $newPassword=$_POST["newpassword"];
-        $confirmNewPassword=$_POST["confirmnewpassword"];
-        $result=$userAccount->updatePassword($currentPassword,$newPassword,$confirmNewPassword,$loggedInUserName);
+    
+    $detailsMessage = "";
+    $passwordMessage = "";
+    $formProvider = new SettingsFormProvider();
+    
+    if(isset($_POST["saveDetailsButton"])) {
+        $account = new Account($con);
+    
+        $firstName = FormSanitizer::sanitizeFormString($_POST["firstName"]);
+        $lastName = FormSanitizer::sanitizeFormString($_POST["lastName"]);
+        $email = FormSanitizer::sanitizeFormString($_POST["email"]);
+    
+        if($account->updateDetails($firstName, $lastName, $email, $userLoggedInObj->getusername())) {
+            $detailsMessage = "<div class='alert alert-success'>
+                                    <strong>SUCCESS!</strong> Details updated successfully!
+                                </div>";
+        }
+        else {
+            $errorMessage = $account->getFirstError();
+    
+            if($errorMessage == "") $errorMessage = "Something went wrong";
+    
+            $detailsMessage = "<div class='alert alert-danger'>
+                                    <strong>ERROR!</strong> $errorMessage
+                                </div>";
+        }
     }
-?>
-
-<!DOCTYPE html>
-
-<html lang="en" dir="ltr">
-    <head>
-    <meta charset="UTF-8">
-
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-
-    <body>     
-        <div class="container">
-            <div class="title">Update your profile</div>
-            <div class="content">
-        
-                <form action="updateProfile.php" method="POST">
-                    <div class="user-details">
-                        <div class="input-box">
-                            <input type="text" name="email" placeholder="Enter your new email">
-                            <?php  echo $userAccount->displayError(StatusMessage::$emailInvalidError); ?>
-                            <?php echo $userAccount->displayError(StatusMessage::$emailUniqueError); ?>
-                        </div>
-                        <div class="button">
-                            <button type="submit" name="UpdateEmail">Update Email</button>
-                        </div>
-                    </div>
-                    
-                    <div class="user-details">
-                        <div class="input-box">
-                            <input type="password" name ="currentpassword" placeholder="Enter old password">
-                        </div>
-                        <div class="input-box">
-                            <input type="password" name ="newpassword" placeholder="Enter new password">
-                        </div>
-
-                        <div class="input-box">
-                            <input type="password" name = "confirmnewpassword" placeholder="Confirm new password">
-
-                            <?php echo $userAccount->displayError(StatusMessage::$passwordMatchError); ?>
-                            <?php echo $userAccount->displayError(StatusMessage::$passwordLengthError); ?>
-                        </div>
-                        <div class="button">
-                            <button type="submit" name="UpdatePassword">Update Password</button>
-                        </div>
-                    </div>
-                </form>
+    
+    if(isset($_POST["savePasswordButton"])) {
+        $account = new Account($con);
+    
+        $oldPassword = FormSanitizer::sanitizeFormPassword($_POST["oldPassword"]);
+        $newPassword = FormSanitizer::sanitizeFormPassword($_POST["newPassword"]);
+        $newPassword2 = FormSanitizer::sanitizeFormPassword($_POST["newPassword2"]);
+    
+        if($account->updatePassword($oldPassword, $newPassword, $newPassword2, $userLoggedInObj->getusername())) {
+            $passwordMessage = "<div class='alert alert-success'>
+                                    <strong>SUCCESS!</strong> Password updated successfully!
+                                </div>";
+        }
+        else {
+            $errorMessage = $account->getFirstError();
+    
+            if($errorMessage == "") $errorMessage = "Something went wrong";
+    
+            $passwordMessage = "<div class='alert alert-danger'>
+                                    <strong>ERROR!</strong> $errorMessage
+                                </div>";
+        }
+    }
+    ?>
+    <div class="settingsContainer column">
+    
+        <div class="formSection">
+            <div class="message">
+                <?php echo $detailsMessage; ?>
             </div>
+            <?php
+                echo $formProvider->createUserDetailsForm(
+                    isset($_POST["firstName"]) ? $_POST["firstName"] : $userLoggedInObj->getFirstName(),
+                    isset($_POST["lastName"]) ? $_POST["lastName"] : $userLoggedInObj->getLastName(),
+                    isset($_POST["email"]) ? $_POST["email"] : $userLoggedInObj->getEmail()
+                );
+            ?>
         </div>
-    </body>
-</html>
+    
+        <div class="formSection">
+            <div class="message">
+                <?php echo $passwordMessage; ?>
+            </div>
+            <?php
+                echo $formProvider->createPasswordForm();
+            ?>
+        </div>
+    
+    </div>

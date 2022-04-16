@@ -53,7 +53,7 @@ $loggedInUser = new UserDetails($con, $loggedInUserName);
     <button class="btn hamburgermenu">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="index.php?page=Home"><i class="fab fa-youtube fa-lg" style="color:red;"></i> MeTube</a>
+    <a class="navbar-brand" href="index.php?page=Home"><img src="files/images/metube.png" width="200" height="30"></a>
     <button class="navbar-toggler btn " type="button" data-toggle="collapse" data-target="#navbar-collapse-content"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         Menu <i class="fas fa-caret-square-down"></i>
@@ -96,7 +96,7 @@ $loggedInUser = new UserDetails($con, $loggedInUserName);
         </li>
         
         <li class='nav-item'>
-          <a class='style-scope ytd-button-renderer style-suggestive size-small' href='login.php'>Sign In<i class='fas fa-user' style='font-size:24px'></i></a>
+          <a class='style-scope ytd-button-renderer style-suggestive size-small' href='signIn.php'>Sign In<i class='fas fa-user' style='font-size:24px'></i></a>
         </li>
 
 
@@ -108,7 +108,7 @@ $loggedInUser = new UserDetails($con, $loggedInUserName);
             
        echo "<ul class='navbar-nav ml-auto'>
       <li class='nav-item'>
-        <a class='btn nav-link text-primary sign btn btn-outline-primary my-2 my-lg-1'  href='login.php'  >Sign In</a>
+        <a class='btn nav-link text-primary sign btn btn-outline-primary my-2 my-lg-1'  href='signIn.php'  >Sign In</a>
       </li> <p>&nbsp</p>
       
       <li class='nav-item'>
