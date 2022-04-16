@@ -32,30 +32,85 @@ require_once("files/main.php");
         Select a category:
     </label>
     <div id = 'category'>
+        
+      <div class="form-check">
+            <input type="radio" class="form-check-input" name="category" id="Music" value="Music">
+            <label class="form-check-label" for="Music">
+                Music
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input type="radio" class="form-check-input" name="category" id="Fitness" value="Fitness">
+            <label class="form-check-label" for="Fitness">
+                Fitness
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input type="radio" class="form-check-input" name="category" id="News" value="News">
+            <label class="form-check-label" for="News">
+                News
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input type="radio" class="form-check-input" name="category" id="Motivation" value="Motivation">
+            <label class="form-check-label" for="Motivation">
+                Motivation
+            </label>
+        </div>
+
+
+        <div class="form-check">
+            <input type="radio" class="form-check-input" name="category" id="Movies" value="Movies">
+            <label class="form-check-label" for="Movies">
+                Movies
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input type="radio" class="form-check-input" name="category" id="Travel" value="Travel">
+            <label class="form-check-label" for="Travel">
+                Travel
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input type="radio" class="form-check-input" name="category" id="CarsAndBikes" value="CarsAndBikes">
+            <label class="form-check-label" for="CarsAndBikes">
+                Cars and Bikes
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input type="radio" class="form-check-input" name="category" id="Education" value="Education">
+            <label class="form-check-label" for="Education">
+                Education
+            </label>
+        </div>
+
         <div class="form-check">
             <input type="radio" class="form-check-input" name="category" id="Animal" value="Animal">
             <label class="form-check-label" for="Animal">
                 Animal
             </label>
         </div>
-        <div class="form-check">
-            <input type="radio" class="form-check-input" name="category" id="Human" value="Human">
-            <label class="form-check-label" for="Human">
-                Human
-            </label>
-        </div>
+
         <div class="form-check">
             <input type="radio" class="form-check-input" name="category" id="Sports" value="Sports">
             <label class="form-check-label" for="Sports">
                 Sports
             </label>
         </div>
+
         <div class="form-check">
             <input type="radio" class="form-check-input" name="category" id="Other" value="Other" checked>
             <label class="form-check-label" for="Other">
                 Other
             </label>
         </div>
+        
     </div>
     <br>
     <label class="form-label" for="visibility">

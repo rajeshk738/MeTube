@@ -1,5 +1,5 @@
 <?php
-ob_start(); 
+ob_start();
 
 
 session_start();
@@ -18,5 +18,3 @@ try {
 
 
 ?>
-
-

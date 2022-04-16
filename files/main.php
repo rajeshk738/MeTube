@@ -53,7 +53,7 @@ $loggedInUser = new UserDetails($con, $loggedInUserName);
     <button class="btn hamburgermenu">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="index.php?page=Home"><img src="files/images/metube.png" width="200" height="30"></a>
+    <a class="navbar-brand" href="index.php?page=Home"><i class="fab fa-youtube fa-lg" style="color:red;"></i> MeTube</a>
     <button class="navbar-toggler btn " type="button" data-toggle="collapse" data-target="#navbar-collapse-content"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         Menu <i class="fas fa-caret-square-down"></i>
