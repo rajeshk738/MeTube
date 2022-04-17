@@ -1,9 +1,10 @@
-<?php  
+<?php
 class MessagingClass{
     private $con;
     public function __construct($con){
         $this->con=$con;
     }
+
     public function getAllUserstoMessage($userName){
         try{
             $query = $this->con->prepare("SELECT * from users where userName != '$userName'");
@@ -14,37 +15,35 @@ class MessagingClass{
             else{
 
                 $html = "
-                <div><div class='table-responsive'><table class='table table-bordered table-striped table-hover'>
-                        <thead class='thead-dark'>
-                        <tr>
-                        <th>Username</th>
-                        <th>Message</th>
-                        <th>Send Message</th>
-                        </tr>
-                    
-                        </thead>
-                        <tbody><tr><td>";
+                <div><div class='table-responsive'>
+                        <p></p>
+                        <p></p>
+                        <p></p>";
 
                 $html.= "<div style='padding-bottom:10px;'>
-                
+
                 <form action='message.php' method='POST'>
-                <select name='recipient'>";
+
+                <p> Username: <p><select name='recipient'>";
                 while($row= $query->fetch(PDO::FETCH_ASSOC)){
                     $html.= "<option value='" . $row['userName'] . "'>" . $row['userName'] . "</option>";
                 }
-                $html.= "</select></td>
-                <td><textarea rows = '7' cols = '90' name = 'msg' placeholder='enter your message'></textarea></td>
-                <td><button type='submit' class='btn btn-primary' name='messageButton' value='$userName'>Message</button></td>
-                </form>
-                </div></td></tr>";
 
-                $html.="</tbody>
-                </table></div>
+                $html.= "</select></p></p>
+                <p>Message: <p> <textarea rows = '10' cols = '100' name = 'msg' placeholder='Enter your message here...'></textarea
+                </p></p>
+                <button type='submit' class='btn btn-dark btn-lg' name='messageButton' value='$userName'>Send Message</button>
+                </form>
+                </div>";
+
+                $html.="
+                </div>
+
                 <form action='message.php' method='POST'>
-                    <button type='submit' class='btn btn-primary' name='inbox' value='$userName'>Inbox</button>
-                    <button type='submit' class='btn btn-primary' name='sent' value='$userName'>Sent</button>
+                    <button type='submit' class='btn btn-dark btn-sm' name='inbox' value='$userName'>Inbox</button>
+                    <button type='submit' class='btn btn-dark btn-sm' name='sent' value='$userName'>Sent</button>
                     </form>
-                
+
                 </div>";
                  return $html;
             }
@@ -54,7 +53,7 @@ class MessagingClass{
         }
     }
     public function sendMessage($loggedInUserName, $recipient, $msg){
-        echo "Message has been delivered";
+        echo "<p><br/>Successfully sent the message.</p>";
         $query = $this->con->prepare("INSERT INTO messages(sentBy, sentTo, message) VALUES('$loggedInUserName', '$recipient', '$msg')");
         $query->execute();
     }
@@ -72,7 +71,7 @@ class MessagingClass{
         }
         else{
             $html = "
-            <div><div class='table-responsive'><table class='table table-bordered table-striped table-hover'>
+            <div><div class='table-responsive'><br/><br/><table class='table table-bordered table-striped table-hover'>
                     <thead class='thead-dark'>
                     <tr>
                     <th>Sent By</th>
@@ -90,11 +89,10 @@ class MessagingClass{
 
                 $html.=  "<tr><td>$sentBy</td>";
                 $html.=  "<td>$sentTo</td>";
-                $html.=  "<td>$message</td>";  
-                $html.=  "<td>$sentAt</td></tr>";   
+                $html.=  "<td>$message</td>";
+                $html.=  "<td>$sentAt</td></tr>";
             }
             echo $html;
         }
     }
 }
-

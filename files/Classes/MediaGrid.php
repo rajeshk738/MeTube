@@ -13,7 +13,7 @@ class MediaGrid
     {
         $filter = "";
 
-        return "<div class='videoGridHeader'> 
+        return "<div class='videoGridHeader'>
                     <div class='left'>
                         $title
                     </div>
@@ -40,7 +40,7 @@ class MediaGrid
     {
         $header = $this->createGridHeader($headerTitle);
         return "$header
-                <div class='$this->gridClass'> 
+                <div class='$this->gridClass'>
                     $gridItems
                 </div>";
     }
@@ -127,7 +127,7 @@ class MediaGrid
         $mediaCategory = $media->getCategory();
         $mediaOwner = $media->getUploadedBy();
 
-        $query = $this->con->prepare("SELECT * FROM media where media.category = '$mediaCategory' and media.uploadedBy != '$mediaOwner' 
+        $query = $this->con->prepare("SELECT * FROM media where media.category = '$mediaCategory' and media.uploadedBy != '$mediaOwner'
                                     and privacy = 'Public' order by rand() limit 4");
         $query->execute();
 
@@ -164,9 +164,9 @@ class MediaGrid
 
     public function getPublicItemsUser($type, $category, $sortby, $privacy, $loggedInUserName)
     {
-        $sqlString = "SELECT media.* FROM media 
-                                    inner join users on media.uploadedBy=users.userName and users.userName !='$loggedInUserName' 
-                                    left outer join contact on users.userName=contact.userName and contactUserName='$loggedInUserName' 
+        $sqlString = "SELECT media.* FROM media
+                                    inner join users on media.uploadedBy=users.userName and users.userName !='$loggedInUserName'
+                                    left outer join contact on users.userName=contact.userName and contactUserName='$loggedInUserName'
                                     where media.privacy='$privacy' and media.mediaType = '$type' and (status!='Blocked' or status is NULL)";
         if ($category != "") {
             $sqlString .= " and media.category = '$category'";
@@ -190,7 +190,7 @@ class MediaGrid
 
     public function getKeywordsItemsVisitor($type, $keywords, $sortby, $privacy, $size)
     {
-        $sqlString = "SELECT media.* FROM media 
+        $sqlString = "SELECT media.* FROM media
                       inner join keywords on media.id = keywords.media_id
                       where media.privacy='$privacy' and media.mediaType = '$type' and keywords.keyword = '$keywords'";
 
@@ -222,9 +222,9 @@ class MediaGrid
 
     public function getKeywordsItemsUser($type, $keywords, $sortby, $privacy, $loggedInUserName, $size)
     {
-        $sqlString = "SELECT media.* FROM media 
+        $sqlString = "SELECT media.* FROM media
                       inner join keywords on media.id = keywords.media_id
-                      inner join users on media.uploadedBy=users.userName and users.userName !='$loggedInUserName' 
+                      inner join users on media.uploadedBy=users.userName and users.userName !='$loggedInUserName'
                       left outer join contact on users.userName=contact.userName and contactUserName='$loggedInUserName'
                       where media.privacy='$privacy' and media.mediaType = '$type' and (status!='Blocked' or status is NULL) and keywords.keyword = '$keywords'";
         if ($size != "") {
@@ -275,8 +275,8 @@ class MediaGrid
 
     public function getFavorite($type, $sortby, $loggedInUserName)
     {
-        $sqlString = "SELECT media.* FROM media 
-                                    inner join favorites on media.id=favorites.videoId 
+        $sqlString = "SELECT media.* FROM media
+                                    inner join favorites on media.id=favorites.videoId
                                     where favorites.userName='$loggedInUserName'
                                     and media.mediaType = '$type'";
 
@@ -297,12 +297,12 @@ class MediaGrid
 
     public function getSharedMedia($type, $sortby, $loggedInUserName)
     {
-        $sqlString = "SELECT media.* FROM media inner join contact on media.uploadedBy=contact.userName 
-                                where contactUserName='$loggedInUserName' 
+        $sqlString = "SELECT media.* FROM media inner join contact on media.uploadedBy=contact.userName
+                                where contactUserName='$loggedInUserName'
                                 and media.mediaType = '$type'
-                                and ((contactType='Family' and media.privacy='Family') 
-                                     or (contactType='Friend' and media.privacy='Friend') 
-                                     or (contactType='Fav' and media.privacy='Fav')) 
+                                and ((contactType='Family' and media.privacy='Family')
+                                     or (contactType='Friend' and media.privacy='Friend')
+                                     or (contactType='Fav' and media.privacy='Fav'))
                                 and status = 'Not Blocked'";
 
         if ($sortby != "") {

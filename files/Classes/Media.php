@@ -18,7 +18,7 @@ class Media{
     public function getId(){
         return $this->userData["id"];
     }
-    
+
     public function getUploadedBy(){
         return $this->userData["uploadedBy"];
     }
@@ -55,7 +55,7 @@ class Media{
         return $this->userData["category"];
     }
 
-    public function getUploadDate(){   
+    public function getUploadDate(){
         return $this->userData["uploadDate"];
     }
     public function getViews(){
@@ -71,10 +71,10 @@ class Media{
         $query= $this->con->prepare("UPDATE media SET views = views+1 WHERE id = '$videoId'");
         $query->execute();
         $this->userData["views"] = $this->userData["views"] + 1;
-    }  
+    }
 
     public function getMediasize(){
         return round($this->userData["mediaSize"]/1024, 2). "kb";
-    }  
+    }
 }
 ?>
