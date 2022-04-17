@@ -1,15 +1,16 @@
-<?php 
+<?php
 
-require_once("files/main.php"); 
+require_once("files/main.php");
 require_once("files/Classes/messagingClass.php");
 
 ?>
 <div class='container' style='padding-top:10px;'>
 <div class='jumbotron'>
-    <h3 class="text-dark display-3 text-center">Contacts</h3>
+    <!-- <h2 class="text-dark display-3 text-center">Messages</h2> -->
+    <p class="text-dark display-4 text-center">Messages</p>
 
     <?php
-    
+
     $messagingClass = new MessagingClass($con);
     $result= $messagingClass->getAllUserstoMessage($loggedInUserName);
     if($result!="")
@@ -38,4 +39,3 @@ require_once("files/Classes/messagingClass.php");
     }
 
 ?>
-	
