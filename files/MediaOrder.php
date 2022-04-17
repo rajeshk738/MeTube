@@ -1,3 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+.dropbtn {
+  background-color: grey;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
+</head>
+</html>
+
 <?php
 require_once("connection.php");
 require_once("Classes/UserDetails.php");
@@ -10,22 +55,30 @@ require_once("Classes/MediaItem.php");
         <p  style="text-align: center; font-size: 20px;"><?php echo $mediaTitle ?> </p>
     </div>
 
-    <div style="display:flex; align-items: center; justify-content: flex-end">
-        <div style="font-size: 18px"> Media Order by: &nbsp;&nbsp;</div>
-        <ul aria-label="Sorted By:" class="nav nav-tabs justify-content-end" id="pills-tab-order" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pills-Title-tab" data-bs-toggle="tab" data-bs-target="#pills-Title" type="button" role="tab" aria-controls="pills-Title" aria-selected="true">Title</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-Views-tab" data-bs-toggle="tab" data-bs-target="#pills-Views" type="button" role="tab" aria-controls="pills-Views" aria-selected="false">Most Views</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-Upload-tab" data-bs-toggle="tab" data-bs-target="#pills-Upload" type="button" role="tab" aria-controls="pills-Upload" aria-selected="false">Recently Uploads</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-Size-tab" data-bs-toggle="tab" data-bs-target="#pills-Size" type="button" role="tab" aria-controls="pills-Size" aria-selected="false">Size</button>
-            </li>
-        </ul>
+    <div style="display:flex; align-items: center; ">
+
+        <div class="dropdown">
+          <button class="dropbtn">Sort By:</button>
+          <div class="dropdown-content">
+            <ul aria-label="Sorted By:" class="nav nav-tabs justify-content-end" id="pills-tab-order" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-Title-tab" data-bs-toggle="tab" data-bs-target="#pills-Title" type="button" role="tab" aria-controls="pills-Title" aria-selected="true">Title</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-Views-tab" data-bs-toggle="tab" data-bs-target="#pills-Views" type="button" role="tab" aria-controls="pills-Views" aria-selected="false">Most Views</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-Upload-tab" data-bs-toggle="tab" data-bs-target="#pills-Upload" type="button" role="tab" aria-controls="pills-Upload" aria-selected="false">Recently Uploads</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-Size-tab" data-bs-toggle="tab" data-bs-target="#pills-Size" type="button" role="tab" aria-controls="pills-Size" aria-selected="false">Size</button>
+                </li>
+            </ul>
+          </div>
+        </div>
+
+
+
     </div>
 </div>
 

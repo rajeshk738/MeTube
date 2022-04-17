@@ -27,10 +27,10 @@ class UserDetails{
     public function getjoinDate(){
         return $this->userData["joinDate"];
     }
-  
-  
 
- 
+
+
+
 
 }
 

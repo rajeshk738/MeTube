@@ -29,7 +29,7 @@
 
 ?>
 
-<div class="PageDiv"> 
+<div class="PageDiv">
     <div class="watchLeftColumn embed-responsive">
     <?php
         $mediaPlayer= new MediaPlayer($media);
@@ -55,14 +55,45 @@
     echo $mediaPlayer->create();
 
     echo "<form action='download.php' method='POST' >
-    <button type='submit' value='$mediaId' name='downloadButton'>Download</button>
+    <button type='submit' class='btn btn-dark btn-sm' name='downloadButton' value='$mediaId'>Download</button>
+
     </form>";
+
+    $checkquery = $con->prepare("SELECT * from favorites where userName='$loggedInUserName' and videoId = '$mediaId'");
+        $checkquery->execute();
+        echo str_repeat("&nbsp;", 30);
+        if ($checkquery->rowCount() == 0) {
+            echo "<form action='addtofavorites.php' method='GET' >
+            <button type='submit' class='btn btn-dark btn-sm' name='Id' value='$mediaId' &nbsp;&nbsp>Add to Favorite</button>
+
+                  </form>";
+        }
+        else {
+            echo "<form action='removeFromFavorite.php' method='GET' >
+            <button type='submit' class='btn btn-dark btn-sm' name='Id' value='$mediaId' &nbsp;&nbsp>Remove from Favorite</button>
+
+                  </form>";
+
+        }
+
+        if (isset($_GET["add"]) && $_GET["add"] == 'success') {
+            echo "<div class='badge'>
+                     <p style = 'color:green'>Successfully added to Favorite!</p>
+                  </div>";
+        }
+
+        if (isset($_GET["delete"]) && $_GET["delete"] == 'success') {
+            echo "<div class='badge'>
+                    <p style = 'color:red'>Successfully removed From Favorite!</p>
+                  </div>";
+        }
+
 
     $checkquery = $con->prepare("SELECT * from rating where mediaId = '$mediaId'");
     $checkquery -> execute();
 
     if ($checkquery->rowCount() == 0) {
-        echo "Not enough ratings available";
+        echo "No ratings available";
     }
     else{
         $ratingquery = $con->prepare("SELECT ROUND(AVG(ratedIndex),1) as avg FROM rating where mediaId='$mediaId'");
@@ -73,7 +104,6 @@
     }
 
     if($loggedInUserName!=""){
-
         echo "<form action='updateRating.php' method='POST' >
         <td><select name='rate'>
         <option value=1>1</option>
@@ -82,9 +112,10 @@
         <option value=4>4</option>
         <option value=5>5</option>
       	</select>
-      	<button type='submit' value='$mediaId' name='ratingButton'>Update Rating</button>
-        </form>";
+          <button type='submit' class='btn btn-dark btn-sm' name='ratingButton' value='$mediaId'>Update Rating</button>
 
+        </form>";
+        echo str_repeat("&nbsp;", 30);
         echo "<form action='addtoplaylist.php' method='POST' >";
         $query = $con->prepare("SELECT * FROM playlist where userName = '$loggedInUserName'");
         $query->execute();
@@ -93,36 +124,12 @@
         while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
             echo "<option value='" . $row['name'] . "'>" . $row['name'] . "</option>";
         }
-        echo "</select>";
+        echo "</select> &nbsp";
 
-        echo "<button type='submit' value='$mediaId' name='playlistButton'>Add to Playlist</button>
+        echo "<button type='submit' class='btn btn-dark btn-sm' name='playlistButton' value='$mediaId'>Add to Playlist</button>
         </form>";
 
-        $checkquery = $con->prepare("SELECT * from favorites where userName='$loggedInUserName' and videoId = '$mediaId'");
-        $checkquery->execute();
-        if ($checkquery->rowCount() == 0) {
-            echo "<form action='addtofavorites.php' method='GET' >
-                    <button type='submit' value='$mediaId' name='Id'>Add to Favorite</button>
-                  </form>";
-        }
-        else {
-            echo "<form action='removeFromFavorite.php' method='GET' >
-                    <button type='submit' value='$mediaId' name='Id'>Remove from Favorite</button>
-                  </form>";
 
-        }
-
-        if (isset($_GET["add"]) && $_GET["add"] == 'success') {
-            echo "<div class='badge'>
-                     <p style = 'color:red'>Successfully added to Favorite!</p>
-                  </div>";
-        }
-
-        if (isset($_GET["delete"]) && $_GET["delete"] == 'success') {
-            echo "<div class='badge'>
-                    <p style = 'color:red'>Successfully removed From Favorite!</p>
-                  </div>";
-        }
 
         if ($mediaOwner == $loggedInUserName) {
             echo "<form action='updateVideoInfo.php' method='GET' >
@@ -130,7 +137,7 @@
               </form>";
         }
     }
-?> 
+?>
 </div>
 
 
@@ -156,15 +163,16 @@
 
 
 ?>
-<?php    
+<?php
 
 if($loggedInUserName!=""){
     echo "<div class='commentSection' style='margin-right:425px;'>
                <form action='watch.php' method='POST' style='padding-top:20px' >
                 <div class='input-group'>
-                    <input type='text' id='comment' name='comment' required placeholder='your comment' class='form-control' >
+                    <input type='text' id='comment' name='comment' required placeholder='your comment' class='form-control' >&nbsp;&nbsp
                     <div class='input-group-append'>
-                        <button class='btn btn-primary' type='submit' value='$mediaId' name='postComment'>Post</button>
+
+                        <button class='btn btn-primary' type='submit' value='$mediaId' name='postComment'>Comment</button>
                     </div>
                 </div>
             </form>
@@ -172,4 +180,3 @@ if($loggedInUserName!=""){
 }
 
 ?>
-    

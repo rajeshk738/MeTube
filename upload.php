@@ -12,19 +12,19 @@ require_once("files/main.php");
                 echo "<p style='color: Red'> File exists! Please upload again</p>";
             }
         ?>
-        <label for="formFile" class="form-label">Select a media file to upload</label>
+        <label for="formFile" class="form-label">Upload media file</label>
         <input class="form-control" type="file" id="formFile" name = 'mediaFile' required>
     </div>
 
     <div class="form-floating">
-        <label for="title">Media Title:</label>
+        <label for="title">Title</label>
         <textarea class="form-control" name="title" rows = "1"  maxlength="50"
-                  placeholder="Enter your title(required)" id="title" required></textarea>
+                  placeholder="Enter your title here..." id="title" required></textarea>
     </div>
     <br>
     <div class="form-floating">
-        <label for="keywords">Keyword List (separted by ',')</label>
-        <textarea class="form-control" name="keywords" placeholder="Enter keywords list, each keyword separated by ','" id="keywords"></textarea>
+        <label for="keywords">Keywords</label>
+        <textarea class="form-control" name="keywords" placeholder="Enter keywords of the media file, each keyword separated by ','" id="keywords"></textarea>
     </div>
     <br>
 <!--    <p> Select a category</p>-->
@@ -32,7 +32,7 @@ require_once("files/main.php");
         Select a category:
     </label>
     <div id = 'category'>
-        
+
       <div class="form-check">
             <input type="radio" class="form-check-input" name="category" id="Music" value="Music">
             <label class="form-check-label" for="Music">
@@ -110,7 +110,7 @@ require_once("files/main.php");
                 Other
             </label>
         </div>
-        
+
     </div>
     <br>
     <label class="form-label" for="visibility">
@@ -136,16 +136,16 @@ require_once("files/main.php");
             </label>
         </div>
         <div class="form-check">
-            <input type="radio" class="form-check-input" name="visibility" id="Fav" value="Fav">
-            <label class="form-check-label" for="Fav">
-                Fav
+            <input type="radio" class="form-check-input" name="visibility" id="Favourite" value="Favourite">
+            <label class="form-check-label" for="Favourite">
+                Favourite
             </label>
         </div>
     </div>
     <br>
     <div class="form-floating">
         <label for="floatingTextarea">Description</label>
-        <textarea class="form-control" name = 'description' placeholder="Enter media description 200 characters maximum" id="floatingTextarea" maxlength="200"></textarea>
+        <textarea class="form-control" cols = '6' rows = '6' name = 'description' placeholder="Enter file description here.." id="floatingTextarea" maxlength="200"></textarea>
     </div>
     <br>
     <button class="btn btn btn-primary" value="upload" name="upload" type="submit" />Upload</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

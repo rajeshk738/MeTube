@@ -11,10 +11,10 @@ class MediaItem{
                     <img src='$thumbnail_path'></div>";
         $details= $this->createDetails();
         $url= "watch.php?Id=" . $this->media->getId();
-        
+
         return "<a href='$url'>
                     <div class='videoGridItem'>
-                   $thumbnail 
+                   $thumbnail
                     $details
                     </div>
                 </a>";
@@ -38,5 +38,5 @@ class MediaItem{
                     <span class='description'>$size</span>
                 </div>";
     }
-} 
+}
 ?>

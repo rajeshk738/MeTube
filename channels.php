@@ -3,7 +3,7 @@ $page = "MyChannel";
 $category = "";
 $sortby = "";
 $keywords = "";
-$mediaTitle = "My Channel";
+$mediaTitle = "";
 require("files/MediaOrder.php")
 ?>
 
