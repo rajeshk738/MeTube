@@ -1,16 +1,12 @@
 <?php
 class SettingsFormProvider {
 
-    public function createUserDetailsForm($firstName, $lastName, $email) {
-        $firstNameInput = $this->createFirstNameInput($firstName);
-        $lastNameInput = $this->createLastNameInput($lastName);
-        $emailInput = $this->createEmailInput($email);
+    public function createUserDetailsForm($emailId) {
+        $emailInput = $this->createEmailInput($emailId);
         $saveButton = $this->createSaveUserDetailsButton();
 
-        return "<form action='settings.php' method='POST' enctype='multipart/form-data'>
-                    <span class='title'>User details</span>
-                    $firstNameInput
-                    $lastNameInput
+        return "<form action='updateProfile.php' method='POST' enctype='multipart/form-data'>
+                    <span class='title'>Update Email</span>
                     $emailInput
                     $saveButton
                 </form>";
@@ -23,7 +19,7 @@ class SettingsFormProvider {
 
         $saveButton = $this->createSavePasswordButton();
 
-        return "<form action='settings.php' method='POST' enctype='multipart/form-data'>
+        return "<form action='updateProfile.php' method='POST' enctype='multipart/form-data'>
                     <span class='title'>Update password</span>
                     $oldPasswordInput
                     $newPassword1Input
@@ -43,6 +39,12 @@ class SettingsFormProvider {
         if($value == null) $value = "";
         return "<div class='form-group'>
                     <input class='form-control' type='text' placeholder='Last name' name='lastName' value='$value' required>
+                </div>";
+    }
+    private function createUserNameInput($value){
+        if($value == null) $value = "";
+        return "<div class='form-group'>
+                    <input class='form-control' type='text' placeholder='User name' name='userName' value='$value' required>
                 </div>";
     }
 
@@ -68,4 +70,3 @@ class SettingsFormProvider {
                 </div>";
     }
 }
-?>

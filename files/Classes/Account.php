@@ -41,17 +41,14 @@ class Account {
         }
     }
 
-    public function updateDetails($fn, $ln, $em, $un) {
-        $this->validateFirstName($fn);
-        $this->validateLastName($ln);
+    public function updateDetails($un,$em) {
+        
         $this->validateNewEmail($em, $un);
 
         if(empty($this->errorArray)) {
-            $query = $this->con->prepare("UPDATE users SET firstName=:fn, lastName=:ln, email=:em WHERE userName=:un");
-            $query->bindParam(":fn", $fn);
-            $query->bindParam(":ln", $ln);
+            $query = $this->con->prepare("UPDATE users SET emailId=:em WHERE userName=:un");
             $query->bindParam(":em", $em);
-            $query->bindParam(":un", $un);
+            
 
             return $query->execute();
         }

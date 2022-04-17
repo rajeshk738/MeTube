@@ -18,7 +18,7 @@ class User {
     }
     
     public function getUsername() {
-        return $this->sqlData["username"];
+        return $this->sqlData["userName"];
     }
 
     public function getName() {
@@ -34,7 +34,7 @@ class User {
     }
 
     public function getEmail() {
-        return $this->sqlData["email"];
+        return $this->sqlData["emailId"];
     }
 
     public function getProfilePic() {
@@ -42,7 +42,7 @@ class User {
     }
 
     public function getSignUpDate() {
-        return $this->sqlData["signUpDate"];
+        return $this->sqlData["joinDate"];
     }
 
     public function isSubscribedTo($userTo) {
@@ -76,6 +76,7 @@ class User {
         }
         return $subs;
     }
+ 
 
 }
 ?>
