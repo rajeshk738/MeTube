@@ -1,12 +1,12 @@
-<?php 
-require_once("files/main.php"); 
+<?php
+require_once("files/main.php");
 require_once("files/Classes/friendsClass.php");
 require_once("files/Classes/StatusMessage.php");
 ?>
 
-<div class='container' style='padding-top:10px;'>
-<div class='jumbotron'>
-    <h3 class="text-dark display-3 text-center">Contacts</h3>
+<div class='container' style='padding-top:20px;'>
+<div class='jumbotron jumbotron-fluid'>
+    <h2 class="text-light bg-dark display-3 text-center">Contacts</h2>
 
     <?php
     
@@ -17,11 +17,11 @@ require_once("files/Classes/StatusMessage.php");
         echo $result;
     }
     else{
-        echo "<h5 class='text-primary display-5 text-center'>";
+        echo "<h3 class='text-danger bg-dark display-5 text-center'>";
         echo StatusMessage::$NoContacts;
         "</h5>";
     }
-                
+
     ?>
 
 	<?php

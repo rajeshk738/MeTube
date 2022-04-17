@@ -25,7 +25,7 @@ class FriendsClass{
                     <tbody><tr><td>";
 
                 $html.= "<div style='padding-bottom:10px;'>
-                
+
                 <form action='friend.php' method='POST'>
                 <select name='person'>";
                 while($row= $query->fetch(PDO::FETCH_ASSOC)){
@@ -33,18 +33,22 @@ class FriendsClass{
                 }
 
                 $html.= "</select></td>
-                <td><select name='relation'>
-                    <option value='Friend'>Friend</option>
-                    <option value='Family'>Family</option>
-                    <option value='Fav'>Favourite</option>
-                </select>
-                <button type='submit' class='btn btn-primary' name='friendsButton' value='$userName'>Confirm</button>
+                <td>
+
+								<select name='relation'>
+									<option value='Friend'>Friend</option>
+										<option value='Family'>Family</option>
+								</select>
+
+                <button type='submit' class='btn btn-secondary' name='friendsButton' value='$userName'>Add</button>
                 </div></td>
+
                 <td><select name='block'>
                     <option value='Blocked'>Block</option>
                     <option value='Not Blocked'>Unblock</option>
                 </select>
-                <button type='submit' class='btn btn-primary' name='blockButton' value='$userName'>Confirm</button>
+
+                <button type='submit' class='btn btn-secondary' name='blockButton' value='$userName'>Update</button>
                 </div></td>
 
 
@@ -98,7 +102,7 @@ class FriendsClass{
     	}
         header("location:friend.php");
     }
-    
+
     public function blockfriends($userName, $friendName, $relationType){
         echo "You have " .$relationType. " user " . $friendName;
 
