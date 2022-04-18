@@ -5,7 +5,7 @@ class UserDetails{
     private $userData;
     public function __construct($con,$userName){
         $this->con = $con;
-        $query = $this->con->prepare("SELECT * FROM users WHERE userName = :un");
+        $query = $this->con->prepare("SELECT * FROM userAccounts WHERE userName = :un");
         $query->bindParam(":un", $userName);
         $query->execute();
         $this->userData = $query->fetch(PDO::FETCH_ASSOC);

@@ -7,7 +7,7 @@ class MessagingClass{
 
     public function getAllUserstoMessage($userName){
         try{
-            $query = $this->con->prepare("SELECT * from users where userName != '$userName'");
+            $query = $this->con->prepare("SELECT * from userAccounts where userName != '$userName'");
             $query->execute();
             if($query->rowCount()== 0){
                 return "";

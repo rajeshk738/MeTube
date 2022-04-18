@@ -7,7 +7,7 @@ class FriendsClass{
 
     public function getAllUserstoFriend($userName){
         try{
-            $query = $this->con->prepare("select * from users where userName != '$userName'");
+            $query = $this->con->prepare("select * from userAccounts where userName != '$userName'");
             $query->execute();
             if($query->rowCount()== 0){
                 return "";
@@ -65,7 +65,7 @@ class FriendsClass{
                     </thead>
                     <tbody>";
 
-                $contactquery = $this->con->prepare("select * from contact where userName = '$userName'");
+                $contactquery = $this->con->prepare("select * from contactList where userName = '$userName'");
                 $contactquery->execute();
 
                 while($row = $contactquery->fetch(PDO::FETCH_ASSOC)){
@@ -89,15 +89,15 @@ class FriendsClass{
     public function makefriends($userName, $friendName, $relationType){
     	echo "Relationship status with " . $friendName . " changed to ". $relationType;
 
-    	$checkquery = $this->con->prepare("SELECT * from contact where userName='$userName' and contactUserName = '$friendName'");
+    	$checkquery = $this->con->prepare("SELECT * from contactList where userName='$userName' and contactUserName = '$friendName'");
     	$checkquery->execute();
 
     	if($checkquery->rowCount()==0){
-	    	$query = $this->con->prepare("INSERT INTO contact(userName, contactUserName, contactType) VALUES('$userName', '$friendName', '$relationType')");
+	    	$query = $this->con->prepare("INSERT INTO contactList(userName, contactUserName, contactType) VALUES('$userName', '$friendName', '$relationType')");
 	        $query->execute();
 	    }
 	    else{
-	    	$query = $this->con->prepare("UPDATE contact SET contactType = '$relationType' where userName='$userName' and contactUserName = '$friendName'");
+	    	$query = $this->con->prepare("UPDATE contactList SET contactType = '$relationType' where userName='$userName' and contactUserName = '$friendName'");
 	        $query->execute();
     	}
         header("location:friend.php");
@@ -106,15 +106,15 @@ class FriendsClass{
     public function blockfriends($userName, $friendName, $relationType){
         echo "You have " .$relationType. " user " . $friendName;
 
-        $checkquery = $this->con->prepare("SELECT * from contact where userName='$userName' and contactUserName = '$friendName'");
+        $checkquery = $this->con->prepare("SELECT * from contactList where userName='$userName' and contactUserName = '$friendName'");
         $checkquery->execute();
 
         if($checkquery->rowCount()!=0){
-            $query = $this->con->prepare("UPDATE contact SET status = '$relationType' where userName='$userName' and contactUserName = '$friendName'");
+            $query = $this->con->prepare("UPDATE contactList SET status = '$relationType' where userName='$userName' and contactUserName = '$friendName'");
             $query->execute();
         }
         else{
-            $query = $this->con->prepare("INSERT INTO contact(userName, contactUserName, status) VALUES('$userName', '$friendName', '$relationType')");
+            $query = $this->con->prepare("INSERT INTO contactList(userName, contactUserName, status) VALUES('$userName', '$friendName', '$relationType')");
             $query->execute();
         }
         header("location:friend.php");

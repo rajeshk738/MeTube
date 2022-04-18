@@ -2,7 +2,7 @@
 require_once("files/connection.php");
 require_once("files/main.php");
 
-$query = $con->prepare("SELECT * FROM wordcount");
+$query = $con->prepare("SELECT * FROM wordSearch");
 $query->execute();
 
 echo "<div style = 'font-size: 20px; text-align: center;'>

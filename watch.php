@@ -59,7 +59,7 @@
 
     </form>";
 
-    $checkquery = $con->prepare("SELECT * from favorites where userName='$loggedInUserName' and videoId = '$mediaId'");
+    $checkquery = $con->prepare("SELECT * from favouriteList where userName='$loggedInUserName' and videoId = '$mediaId'");
         $checkquery->execute();
         echo str_repeat("&nbsp;", 30);
         if ($checkquery->rowCount() == 0) {
@@ -89,7 +89,7 @@
         }
 
 
-    $checkquery = $con->prepare("SELECT * from rating where mediaId = '$mediaId'");
+    $checkquery = $con->prepare("SELECT * from userRating where mediaId = '$mediaId'");
     $checkquery -> execute();
 
     if ($checkquery->rowCount() == 0) {

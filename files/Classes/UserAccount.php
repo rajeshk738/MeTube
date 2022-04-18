@@ -14,7 +14,7 @@ class UserAccount{
             $this->validateEmail($email);
             $this->validatePassword($password,$confirmPassword);
             if(empty($this->errorMessages)){
-                $query = $this->con->prepare("INSERT INTO users(emailId,password,userName) VALUES('$email','$password','$userName')");
+                $query = $this->con->prepare("INSERT INTO userAccounts(emailId,password,userName) VALUES('$email','$password','$userName')");
                 return $query->execute();
             }
             else{
@@ -28,7 +28,7 @@ class UserAccount{
 
     public function login($userName, $password){
         try{
-            $query = $this->con->prepare("SELECT * from users where userName='$userName' and password='$password'");
+            $query = $this->con->prepare("SELECT * from userAccounts where userName='$userName' and password='$password'");
             $query->execute();
             if($query->rowCount() ==1){
                 return true;
@@ -49,7 +49,7 @@ class UserAccount{
             array_push($this->errorMessages,StatusMessage::$emailInvalidError);
             return;
         }
-        $query = $this->con->prepare("SELECT emailId from users where emailId='$email'");
+        $query = $this->con->prepare("SELECT emailId from userAccounts where emailId='$email'");
         $query->execute();
         if($query->rowCount()!= 0){
             array_push($this->errorMessages,StatusMessage::$emailUniqueError);
@@ -57,7 +57,7 @@ class UserAccount{
     }
 
     private function validateUserName($userName){   
-        $query = $this->con->prepare("SELECT userName from users where userName='$userName'");
+        $query = $this->con->prepare("SELECT userName from userAccounts where userName='$userName'");
         $query->execute();
         if($query->rowCount()!= 0){
             array_push($this->errorMessages,StatusMessage::$userNameUniqueError);
@@ -77,7 +77,7 @@ class UserAccount{
         try{
             $this->validateEmail($newEmail);
             if(empty($this->errorMessages)){
-                $query = $this->con->prepare("UPDATE users SET emailId ='$newEmail' where userName='$userName'");
+                $query = $this->con->prepare("UPDATE userAccounts SET emailId ='$newEmail' where userName='$userName'");
                 $result= $query->execute();
                 if($result){
                     array_push($this->successMessages,StatusMessage::$SuccessfulUpdateEmail);
@@ -98,7 +98,7 @@ class UserAccount{
 
     public function updatePassword($currentPassword,$newPassword,$confirmNewPassword,$userName){
         try{
-            $query = $this->con->prepare("SELECT password from users where userName='$userName'");
+            $query = $this->con->prepare("SELECT password from userAccounts where userName='$userName'");
             $query->execute();
             $passwordData = $query->fetch(PDO::FETCH_ASSOC);
             $originalPassword=$passwordData["password"];
@@ -111,7 +111,7 @@ class UserAccount{
             }
 
             if(empty($this->errorMessages)){
-                $query1 = $this->con->prepare("UPDATE users SET password = '$newPassword' where userName='$userName'");
+                $query1 = $this->con->prepare("UPDATE userAccounts SET password = '$newPassword' where userName='$userName'");
                 $result= $query1->execute();   
 
                 if($result){

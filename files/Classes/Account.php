@@ -11,7 +11,7 @@ class Account {
     public function login($un, $pw) {
         $pw = hash("sha512", $pw);
 
-        $query = $this->con->prepare("SELECT * FROM users WHERE userName=:un AND password=:pw");
+        $query = $this->con->prepare("SELECT * FROM userAccounts WHERE userName=:un AND password=:pw");
         $query->bindParam(":un", $un);
         $query->bindParam(":pw", $pw);
 
@@ -46,7 +46,7 @@ class Account {
         $this->validateNewEmail($em, $un);
 
         if(empty($this->errorArray)) {
-            $query = $this->con->prepare("UPDATE users SET emailId=:em WHERE userName=:un");
+            $query = $this->con->prepare("UPDATE userAccounts SET emailId=:em WHERE userName=:un");
             $query->bindParam(":em", $em);
             
 
@@ -62,7 +62,7 @@ class Account {
         $this->validatePasswords($pw, $pw2);
 
         if(empty($this->errorArray)) {
-            $query = $this->con->prepare("UPDATE users SET password=:pw WHERE userName=:un");
+            $query = $this->con->prepare("UPDATE userAccounts SET password=:pw WHERE userName=:un");
             $pw = hash("sha512", $pw);
             $query->bindParam(":pw", $pw);
             $query->bindParam(":un", $un);
@@ -77,7 +77,7 @@ class Account {
     private function validateOldPassword($oldPw, $un) {
         $pw = hash("sha512", $oldPw);
 
-        $query = $this->con->prepare("SELECT * FROM users WHERE userName=:un AND password=:pw");
+        $query = $this->con->prepare("SELECT * FROM userAccounts WHERE userName=:un AND password=:pw");
         $query->bindParam(":un", $un);
         $query->bindParam(":pw", $pw);
 
@@ -93,7 +93,7 @@ class Account {
         $pw = hash("sha512", $pw);
         $profilePic = "files/images/profilePictures/default.png";
 
-        $query = $this->con->prepare("INSERT INTO users (firstName, lastName, userName, emailId, password, profilePic)
+        $query = $this->con->prepare("INSERT INTO userAccounts (firstName, lastName, userName, emailId, password, profilePic)
                                         VALUES(:fn, :ln, :un, :em, :pw, :pic)");
 
         $query->bindParam(":fn", $fn);
@@ -124,7 +124,7 @@ class Account {
             return;
         }
 
-        $query = $this->con->prepare("SELECT userName FROM users WHERE userName=:un");
+        $query = $this->con->prepare("SELECT userName FROM userAccounts WHERE userName=:un");
         $query->bindParam(":un", $un);
         $query->execute();
 
@@ -145,7 +145,7 @@ class Account {
             return;
         }
 
-        $query = $this->con->prepare("SELECT emailId FROM users WHERE emailId=:em");
+        $query = $this->con->prepare("SELECT emailId FROM userAccounts WHERE emailId=:em");
         $query->bindParam(":em", $em);
         $query->execute();
 
@@ -162,7 +162,7 @@ class Account {
             return;
         }
 
-        $query = $this->con->prepare("SELECT emailId FROM users WHERE emailId=:em AND userName != :un");
+        $query = $this->con->prepare("SELECT emailId FROM userAccounts WHERE emailId=:em AND userName != :un");
         $query->bindParam(":em", $em);
         $query->bindParam(":un", $un);
         $query->execute();
