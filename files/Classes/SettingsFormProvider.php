@@ -1,13 +1,15 @@
 <?php
 class SettingsFormProvider {
 
-    public function createUserDetailsForm($emailId) {
-        $emailInput = $this->createEmailInput($emailId);
+    public function createUserDetailsForm() {
+        $email = $this->createEmailInput($emailId);
+        $newemail = $this->createEmailInput($newemailId);
         $saveButton = $this->createSaveUserDetailsButton();
 
         return "<form action='updateProfile.php' method='POST' enctype='multipart/form-data'>
                     <span class='title'>Update Email</span>
-                    $emailInput
+                    $email
+                    $newemail
                     $saveButton
                 </form>";
     }
@@ -64,7 +66,7 @@ class SettingsFormProvider {
     }
 
     private function createPasswordInput($name, $placeholder) {
-        
+
         return "<div class='form-group'>
                     <input class='form-control' type='password' placeholder='$placeholder' name='$name' required>
                 </div>";

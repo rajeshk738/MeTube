@@ -7,6 +7,14 @@
 
     if($_GET["keywords"]) {
       $mediaTitle = "Search results for '".$_GET["keywords"]."'";
+      $wor = $_GET['keywords'];
+      $c = "SELECT * from wordSearch where word = '$wor';";
+      $res = $con->query($c);
+
+      if($res->rowCount() != 0){
+        $query = "UPDATE wordSearch SET search_count = search_count+1 WHERE word = '$wor' ";
+        $con->query($query);
+      }
     }
     else {
       $mediaTitle = "No search Results, Use keywords to Search";
@@ -19,6 +27,7 @@
         $size = "";
     }
 ?>
+
 
 
 <div>

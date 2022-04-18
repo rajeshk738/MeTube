@@ -15,7 +15,7 @@ class FriendsClass{
             else{
                 $html = "
                 <div><div class='table-responsive'><table class='table table-bordered table-striped table-hover'>
-                    <thead class='thead-dark'>
+                    <thead class='thead-light'>
                     <tr>
                     <th>Username</th>
                     <th>Relationship</th>
@@ -56,7 +56,7 @@ class FriendsClass{
                 </tbody></table></div>
                 </div>
                 <div><div class='table-responsive'><table class='table table-bordered table-striped table-hover'>
-                    <thead class='thead-dark'>
+                    <thead class='thead-light'>
                     <tr>
                     <th>Username</th>
                     <th>Current Relationship</th>

@@ -25,7 +25,7 @@ class Account {
             return false;
         }
     }
-    
+
     public function register($fn, $ln, $un, $em, $em2, $pw, $pw2) {
         $this->validateFirstName($fn);
         $this->validateLastName($ln);
@@ -41,20 +41,28 @@ class Account {
         }
     }
 
-    public function updateDetails($un,$em) {
-        
-        $this->validateNewEmail($em, $un);
+    public function updateDetails($un,$em, $newem) {
 
-        if(empty($this->errorArray)) {
-            $query = $this->con->prepare("UPDATE userAccounts SET emailId=:em WHERE userName=:un");
-            $query->bindParam(":em", $em);
-            
 
-            return $query->execute();
+        if($this->validateOldEmail($em, $un)) {
+            $q = ("UPDATE userAccounts SET emailId= '$newem' WHERE userName= '$un'");
+            return $con->query($q);
         }
         else {
             return false;
         }
+    }
+
+    private function validateOldEmail($em, $un) {
+
+        $c = "SELECT * FROM userAccounts WHERE emailId= '$em' AND userName= ''$un'";
+        $res = $con->query($c);
+
+        if($res->rowCount() != 0){
+          return true;
+        }
+
+        return false;
     }
 
     public function updatePassword($oldPw, $pw, $pw2, $un) {
@@ -89,7 +97,7 @@ class Account {
     }
 
     public function insertUserDetails($fn, $ln, $un, $em, $pw) {
-        
+
         $pw = hash("sha512", $pw);
         $profilePic = "files/images/profilePictures/default.png";
 
@@ -102,10 +110,10 @@ class Account {
         $query->bindParam(":em", $em);
         $query->bindParam(":pw", $pw);
         $query->bindParam(":pic", $profilePic);
-        
+
         return $query->execute();
     }
-    
+
     private function validateFirstName($fn) {
         if(strlen($fn) > 25 || strlen($fn) < 2) {
             array_push($this->errorArray, StatusMessage::$firstNameCharacters);
@@ -155,23 +163,7 @@ class Account {
 
     }
 
-    private function validateNewEmail($em, $un) {
 
-        if(!filter_var($em, FILTER_VALIDATE_EMAIL)) {
-            array_push($this->errorArray, StatusMessage::$emailInvalid);
-            return;
-        }
-
-        $query = $this->con->prepare("SELECT emailId FROM userAccounts WHERE emailId=:em AND userName != :un");
-        $query->bindParam(":em", $em);
-        $query->bindParam(":un", $un);
-        $query->execute();
-
-        if($query->rowCount() != 0) {
-            array_push($this->errorArray, StatusMessage::$emailTaken);
-        }
-
-    }
 
     private function validatePasswords($pw, $pw2) {
         if($pw != $pw2) {
@@ -188,7 +180,7 @@ class Account {
             array_push($this->errorArray, StatusMessage::$passwordLength);
         }
     }
-    
+
     public function getError($error) {
         if(in_array($error, $this->errorArray)) {
             return "<span class='errorMessage'>$error</span>";

@@ -21,6 +21,7 @@ $loggedInUser = new UserDetails($con, $loggedInUserName);
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>MeTube</title>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -32,21 +33,21 @@ $loggedInUser = new UserDetails($con, $loggedInUserName);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="files/js/jsfile.js"></script>
     <link rel="stylesheet" type="text/css" href="files/css/style.css">
-   
-    
-    
-    
+
+
+
+
     <!-- ni  -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  
+
   <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-    
+
 </head>
 
 
@@ -54,71 +55,73 @@ $loggedInUser = new UserDetails($con, $loggedInUserName);
     <button class="btn hamburgermenu">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="index.php?page=Home"><i class="fab fa-youtube fa-lg" style="color:red;"></i> MeTube</a>
+
+    <!-- <img src="files/images/metube.png" title = 'logo' alt = "MeTube"/> -->
+    <a class="navbar-brand" href="index.php?page=Home"></i> <img src="files/images/metube.png" title = 'logo' alt = "MeTube" width = 75px height = 30px></a>
     <button class="navbar-toggler btn " type="button" data-toggle="collapse" data-target="#navbar-collapse-content"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         Menu <i class="fas fa-caret-square-down"></i>
     </button>
-        
+
  <div class="collapse navbar-collapse" id="navbar-collapse-content">
   <div class="box">
     <div class="search-bar">
       <form class="form-inline my-2 my-lg-0 mr-auto search-bar" action="search.php" method="GET">
         <input class="form-control mr-sm-2 search" list="datalist" onkeyup="ac(this.value)" type="search"
                    placeholder="Search" aria-label="Search" name="keywords">
-        <button><i class="fas fa-search" type="submit"></i></button> 
+        <button><i class="fas fa-search" type="submit"></i></button>
       </form>
     </div>
   </div>
     </div>
 
-   
+
         <?php
         if ($loggedInUserName != "") {
             echo "<ul class='navbar-nav'>
       <li class='nav-item'>
       <a class='text-danger nav-link' href='channels.php'>" . $loggedInUser->getuserName() . " </a>
       </li>
-      
+
       <li class='nav-item'>
          <a class='nav-link' href='upload.php'>Upload <i class='fas fa-upload'></i></a>
       </li>
-   
+
       <li class='nav-item'>
       <a class='nav-link' href='logout.php'>Log Out <i class='fas fa-sign-out-alt'></i></a>
       </li>
       </ul>";
-            
+
         } else {
         /*    echo "<ul class='navbar-nav'>
-                
+
         <li class='nav-item'>
           <a class='style-scope ytd-button-renderer style-suggestive size-small' href='signup.php'>Sign Up <i class='far fa-user-plus' style='font-size:24px'></i> </a>
         </li>
-        
+
         <li class='nav-item'>
           <a class='style-scope ytd-button-renderer style-suggestive size-small' href='signIn.php'>Sign In<i class='fas fa-user' style='font-size:24px'></i></a>
         </li>
 
 
-      </ul>"; 
-         
+      </ul>";
+
          */
-            
-            
-            
+
+
+
        echo "<ul class='navbar-nav ml-auto'>
       <li class='nav-item'>
         <a class='btn nav-link text-primary sign btn btn-outline-primary my-2 my-lg-1'  href='signIn.php'  >Sign In</a>
       </li> <p>&nbsp</p>
-      
+
       <li class='nav-item'>
         <a class='btn nav-link text-primary sign btn btn-outline-primary my-2 my-lg-1' href='signup.php'>Sign Up</a>
         </li>
          </ul>
             ";
-            
-            
+
+
         }
         ?>
     </div>
@@ -131,15 +134,18 @@ $loggedInUser = new UserDetails($con, $loggedInUserName);
             <li class='nav-item'>
                 <a href='index.php?page=Home'>Home</a>
             </li>
-            
+
             <?php
             if ($loggedInUserName != "") {
                 echo "<li class='nav-item'>
                       <a href='updateProfile.php'>Update Profile</a>
                         </li>
+                <li class='nav-item'>
+                      <a href='updatePassword.php'>Update Password</a>
+                        </li>
                         <li class='nav-item'>
-                      <a href='channels.php'>My Channel</a>
-                    </li>
+                              <a href='updateEmail.php'>Update Email</a>
+                                </li>
                     <li class='nav-item'>
                       <a href='playlist.php?id='>My Playlist</a>
                     </li>
@@ -148,19 +154,19 @@ $loggedInUser = new UserDetails($con, $loggedInUserName);
                     </li>
                         <li class='nav-item'>
                         <a href='friend.php'>Contacts</a>
-                      </li> 
+                      </li>
                       <li class='nav-item'>
                         <a href='message.php'>Messages</a>
                       </li>
                       <li class='nav-item'>
                       <a href='discussionBoard.php'>Discussion</a>
                     </li>";
-                      
-                    
-                
-                    
-                    
-                    
+
+
+
+
+
+
             }
             ?>
             <li class='nav-item'>

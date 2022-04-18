@@ -15,11 +15,10 @@ $formProvider = new SettingsFormProvider();
 
 if(isset($_POST["saveDetailsButton"])) {
     $account = new Account($con);
-    $email = $_POST["emailId"];
-    $newemail = $_POST["newemailId"];
-    $userName=$loggedInUser->getUserName();
 
-    if($account->updateDetails($userName, $email, $newemail)) {
+    $email = FormSanitizer::sanitizeFormString($_POST["emailId"]);
+    $userName=$loggedInUser->getUserName();
+    if($account->updateDetails($userName, $email)) {
         $detailsMessage = "<div class='alert alert-success'>
                                 <strong>SUCCESS!</strong> Details updated successfully!
                             </div>";
@@ -75,7 +74,10 @@ if(isset($_POST["savePasswordButton"])) {
             <?php echo $detailsMessage; ?>
         </div>
         <?php
-            echo $formProvider->createUserDetailsForm();
+            echo $formProvider->createUserDetailsForm(
+
+                isset($_POST["emailId"]) ? $_POST["emailId"] : $loggedInUser->getEmail()
+            );
         ?>
     </div>
 

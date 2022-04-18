@@ -50,7 +50,7 @@ try{
         $upload_file);
     echo "Stored in: " . $file_path;
     chmod($upload_file, 0644);
-    $query = $con->prepare("INSERT INTO media(mediaType, title, description, category, privacy, filepath, file_extension, mediaSize, uploadedBy, views, keywords) 
+    $query = $con->prepare("INSERT INTO media(mediaType, title, description, category, privacy, filepath, file_extension, mediaSize, uploadedBy, views, keywords)
                     VALUES('$mediaType', '$title', '$description','$category','$visibility', '$upload_file', '$extension', '$size','$username', 0, '$keywords')");
     $query->execute();
     //get the media id just added to database
@@ -73,22 +73,5 @@ catch(Exception $e){
     echo"Some Error Occured: ".$e->getMessage();
 }
 
-//if (in_array($_FILES["mediaFile"]["type"], $videoExts))
-//{
-//    echo "Upload: " . $_FILES["mediaFile"]["name"] . "<br />";
-//    echo "Type: " . $_FILES["mediaFile"]["type"] . "<br />";
-//    echo "Size: " . ($_FILES["mediaFile"]["size"] / 1024) . " Kb<br />";
-//    echo "Temp file: " . $_FILES["mediaFile"]["tmp_name"] . "<br />";
-//
-//
-//
-//
-//}
-//else
-//{
-//    echo "Invalid file type";
-//    header("Location: upload.php");
-//    exit;
-//}
 header("Refresh: 2;URL=upload.php?");
 ?>

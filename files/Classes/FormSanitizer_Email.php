@@ -1,5 +1,5 @@
 <?php
-class FormSanitizer {
+class FormSanitizer_Email {
 
     public static function sanitizeFormString($inputText) {
         $inputText = strip_tags($inputText);
@@ -21,8 +21,8 @@ class FormSanitizer {
     }
 
     public static function sanitizeFormEmail($inputText) {
-        //$inputText = strip_tags($inputText);
-        //$inputText = str_replace(" ", "", $inputText);
+        $inputText = strip_tags($inputText);
+        $inputText = str_replace(" ", "", $inputText);
         return $inputText;
     }
 

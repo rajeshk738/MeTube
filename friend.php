@@ -9,7 +9,6 @@ require_once("files/Classes/StatusMessage.php");
     <h2 class="text-light bg-dark display-3 text-center">Contacts</h2>
 
     <?php
-    
     $friendsClass = new FriendsClass($con);
     $result= $friendsClass->getAllUserstoFriend($loggedInUserName);
     if($result!="")
@@ -23,7 +22,6 @@ require_once("files/Classes/StatusMessage.php");
     }
 
     ?>
-
 	<?php
 		if(isset($_POST["friendsButton"])){
 			$relation = $_POST['relation'];

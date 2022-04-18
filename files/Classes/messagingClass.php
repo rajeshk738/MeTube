@@ -1,3 +1,20 @@
+
+<html>
+<head>
+<style>
+
+select {
+    cursor:pointer;
+    display:inline-block;
+    position:relative;
+    font:normal 18px Arial, Sans-Serif;
+    color:green;
+    border:0px solid #ccc;
+}
+</style>
+</head>
+</html>
+
 <?php
 class MessagingClass{
     private $con;
@@ -15,22 +32,24 @@ class MessagingClass{
             else{
 
                 $html = "
-                <div><div class='table-responsive'>
-                        <p></p>
-                        <p></p>
-                        <p></p>";
+                <div><div class='table-responsive'>";
 
                 $html.= "<div style='padding-bottom:10px;'>
 
                 <form action='message.php' method='POST'>
 
-                <p> Username: <p><select name='recipient'>";
+                <p> Username: </p><select name='recipient'>";
+
+
                 while($row= $query->fetch(PDO::FETCH_ASSOC)){
+
                     $html.= "<option value='" . $row['userName'] . "'>" . $row['userName'] . "</option>";
-                }
+
+
+            }
 
                 $html.= "</select></p></p>
-                <p>Message: <p> <textarea rows = '10' cols = '100' name = 'msg' placeholder='Enter your message here...'></textarea
+                <p>Message: <p> <textarea rows = '10' cols = '100' name = 'msg' placeholder='Enter your message here...' required></textarea
                 </p></p>
                 <button type='submit' class='btn btn-dark btn-lg' name='messageButton' value='$userName'>Send Message</button>
                 </form>
@@ -72,12 +91,12 @@ class MessagingClass{
         else{
             $html = "
             <div><div class='table-responsive'><br/><br/><table class='table table-bordered table-striped table-hover'>
-                    <thead class='thead-dark'>
+                    <thead class='thead-light'>
                     <tr>
-                    <th>Sent By</th>
-                    <th>Sent To</th>
-                    <th>Messages</th>
-                    <th>Sent At</th>
+                    <th>Sender</th>
+                    <th>Receiver</th>
+                    <th>Message</th>
+                    <th>Date and Time</th>
                     </tr>
                     </thead>
                     <tbody>";
