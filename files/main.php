@@ -84,11 +84,11 @@ $loggedInUser = new UserDetails($con, $loggedInUserName);
       </li>
 
       <li class='nav-item'>
-         <a class='nav-link' href='upload.php'>Upload <i class='fas fa-upload'></i></a>
+         <a class='nav-link' href='upload.php'>Upload <i class='fa fa-upload' style='font-size:25px;color:red'></i></a>
       </li>
 
       <li class='nav-item'>
-      <a class='nav-link' href='logout.php'>Log Out <i class='fas fa-sign-out-alt'></i></a>
+      <a class='nav-link' href='logout.php'>Sign Out <i class='fas fa-sign-out-alt' style='font-size:25px;color:red'></i></a>
       </li>
       </ul>";
 
@@ -137,9 +137,7 @@ $loggedInUser = new UserDetails($con, $loggedInUserName);
 
             <?php
             if ($loggedInUserName != "") {
-                echo "<li class='nav-item'>
-                      <a href='updateProfile.php'>Update Profile</a>
-                        </li>
+                echo "
                 <li class='nav-item'>
                       <a href='updatePassword.php'>Update Password</a>
                         </li>
@@ -161,9 +159,6 @@ $loggedInUser = new UserDetails($con, $loggedInUserName);
                       <li class='nav-item'>
                       <a href='discussionBoard.php'>Discussion</a>
                     </li>";
-
-
-
 
 
 

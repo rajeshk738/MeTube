@@ -6,7 +6,7 @@ class SettingsFormProvider {
         $newemail = $this->createEmailInput($newemailId);
         $saveButton = $this->createSaveUserDetailsButton();
 
-        return "<form action='updateProfile.php' method='POST' enctype='multipart/form-data'>
+        return "<form action='updatePassword.php' method='POST' enctype='multipart/form-data'>
                     <span class='title'>Update Email</span>
                     $email
                     $newemail
@@ -21,7 +21,7 @@ class SettingsFormProvider {
 
         $saveButton = $this->createSavePasswordButton();
 
-        return "<form action='updateProfile.php' method='POST' enctype='multipart/form-data'>
+        return "<form action='updatePassword.php' method='POST' enctype='multipart/form-data'>
                     <span class='title'>Update password</span>
                     $oldPasswordInput
                     $newPassword1Input

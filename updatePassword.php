@@ -7,14 +7,9 @@
     require_once("files/classes/SettingsFormProvider.php");
     require_once("files/classes/User.php");
 
-
-
 $detailsMessage = "";
 $passwordMessage = "";
 $formProvider = new SettingsFormProvider();
-
-
-
 
 if(isset($_POST["savePasswordButton"])) {
     $account = new Account($con);
@@ -39,13 +34,10 @@ if(isset($_POST["savePasswordButton"])) {
     }
 }
 
-
-
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-
 </head>
 <div class="settingsContainer column">
 
@@ -57,8 +49,4 @@ if(isset($_POST["savePasswordButton"])) {
             echo $formProvider->createPasswordForm();
         ?>
     </div>
-
-
-
-
 </div>

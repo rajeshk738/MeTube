@@ -6,13 +6,3 @@ $keywords = "";
 $mediaTitle = "";
 require("files/MediaOrder.php")
 ?>
-
-<!---->
-<!--<div class='videoSection'>-->
-<!--    --><?php
-//    if($loggedInUserName!=""){
-//        $mediaGrid= new MediaGrid($con);
-//        echo $mediaGrid->create('MyChannel', "", "","", $loggedInUserName);
-//    }
-//    ?>
-<!--</div>-->

@@ -12,10 +12,10 @@ class MediaGrid
     public function createGridHeader($title)
     {
         $filter = "";
-
+        $tit = "";
         return "<div class='videoGridHeader'>
                     <div class='left'>
-                        $title
+                        $tit
                     </div>
 
                 </div>";

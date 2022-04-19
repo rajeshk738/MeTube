@@ -6,7 +6,7 @@ $query = $con->prepare("SELECT * FROM wordSearch");
 $query->execute();
 
 echo "<div style = 'font-size: 20px; text-align: center;'>
-           Search Cloud:
+           <strong>Word Search Cloud</strong>
       </div>";
 echo "<div>";
 

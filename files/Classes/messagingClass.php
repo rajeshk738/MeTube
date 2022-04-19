@@ -49,9 +49,9 @@ class MessagingClass{
             }
 
                 $html.= "</select></p></p>
-                <p>Message: <p> <textarea rows = '10' cols = '100' name = 'msg' placeholder='Enter your message here...' required></textarea
+                <p>Message: <p> <textarea rows = '10' cols='50' name = 'msg' placeholder='Enter your message here...' required></textarea
                 </p></p>
-                <button type='submit' class='btn btn-dark btn-lg' name='messageButton' value='$userName'>Send Message</button>
+                <button type='submit' class='btn btn-dark btn-lg active' name='messageButton' value='$userName'>Send Message</button>
                 </form>
                 </div>";
 
@@ -59,8 +59,8 @@ class MessagingClass{
                 </div>
 
                 <form action='message.php' method='POST'>
-                    <button type='submit' class='btn btn-dark btn-sm' name='inbox' value='$userName'>Inbox</button>
-                    <button type='submit' class='btn btn-dark btn-sm' name='sent' value='$userName'>Sent</button>
+                    <button type='submit' class='btn btn-dark btn-sm active' name='inbox' value='$userName'>Inbox</button>
+                    <button type='submit' class='btn btn-dark btn-sm active' name='sent' value='$userName'>Sent</button>
                     </form>
 
                 </div>";

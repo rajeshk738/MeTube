@@ -1,13 +1,24 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.k {
+  background-color: 	#F0F0F0;
+}
+</style>
+</head></html>
 <?php
 
 require_once("files/main.php");
 require_once("files/Classes/messagingClass.php");
 
 ?>
-<div class='container' style='padding-top:10px;'>
-<div class='jumbotron'>
+
+<div class='k' style='padding-top:25px;'>
+<div>
     <!-- <h2 class="text-dark display-3 text-center">Messages</h2> -->
-    <p class="text-dark display-4 text-center">Messages</p>
+    <p class="text-dark display-5 text-left"><b>Compose Message</b></p>
 
     <?php
 
@@ -18,7 +29,7 @@ require_once("files/Classes/messagingClass.php");
         echo $result;
     }
     else{
-        echo "<h5 class='text-primary display-5 text-center'>";
+        echo "<h5 class='text-primary display-4 text-center'>";
         echo StatusMessage::$NoContacts;
         "</h5>";
     }
