@@ -142,7 +142,7 @@
 
 
 <?php
-    echo "<div style='padding-top:20px;' ><h3>Comment Section</h3></div>";
+    echo "<div style='padding-top:20px;' ><h3>User Comments</h3></div>";
     if(isset($_GET["Id"])){
         $result=$commentsClass->getAllCommentsOfMedia($mediaId);
         if($result==""){
@@ -166,10 +166,10 @@
 <?php
 
 if($loggedInUserName!=""){
-    echo "<div class='commentSection' style='margin-right:425px;'>
+    echo "<div class='commentSection' style='margin-right:350px;'>
                <form action='watch.php' method='POST' style='padding-top:20px' >
                 <div class='input-group'>
-                    <input type='text' id='comment' name='comment' required placeholder='your comment' class='form-control' >&nbsp;&nbsp
+                    <input type='text' id='comment' name='comment' required placeholder='comment what you like/dislike' class='form-control' >&nbsp;&nbsp
                     <div class='input-group-append'>
 
                         <button class='btn btn-primary' type='submit' value='$mediaId' name='postComment'>Comment</button>

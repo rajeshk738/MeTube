@@ -19,7 +19,7 @@ class CommentsClass{
                     $comment=$row['comment'];
                     $postedBy=$row['postedBy'];
                     $comentedDate =$row['commentedDate'];
-                    $html.="<div style='margin-right:425px;' class='container1'><span class='text-success'>$postedBy</span><p>$comment</p>  <span class='time-right'>$comentedDate</span></div>";
+                    $html.="<div style='margin-right:445px;' class='container1'><span class='text-secondary'>$postedBy</span><p>$comment</p>  <span class='time-right'>$comentedDate</span></div>";
                 }
               return $html;
             }
@@ -38,7 +38,7 @@ class CommentsClass{
         catch(Exception $e){
             echo"Some Error Occured: ".$e->getMessage();
         }
-        
+
     }
     }
 
