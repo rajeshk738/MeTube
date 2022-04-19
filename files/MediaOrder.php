@@ -58,17 +58,17 @@ require_once("Classes/MediaItem.php");
     <div style="display:flex; align-items: center; ">
 
         <div class="dropdown">
-          <button class="dropbtn">Sort By:</button>
+          <button class="dropbtn">Sort</button>
           <div class="dropdown-content">
             <ul aria-label="Sorted By:" class="nav nav-tabs justify-content-end" id="pills-tab-order" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="pills-Title-tab" data-bs-toggle="tab" data-bs-target="#pills-Title" type="button" role="tab" aria-controls="pills-Title" aria-selected="true">Title</button>
+                    <button class="nav-link active" id="pills-Title-tab" data-bs-toggle="tab" data-bs-target="#pills-Title" type="button" role="tab" aria-controls="pills-Title" aria-selected="true">Name</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-Views-tab" data-bs-toggle="tab" data-bs-target="#pills-Views" type="button" role="tab" aria-controls="pills-Views" aria-selected="false">Most Views</button>
+                    <button class="nav-link" id="pills-Views-tab" data-bs-toggle="tab" data-bs-target="#pills-Views" type="button" role="tab" aria-controls="pills-Views" aria-selected="false">Views</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-Upload-tab" data-bs-toggle="tab" data-bs-target="#pills-Upload" type="button" role="tab" aria-controls="pills-Upload" aria-selected="false">Recently Uploads</button>
+                    <button class="nav-link" id="pills-Upload-tab" data-bs-toggle="tab" data-bs-target="#pills-Upload" type="button" role="tab" aria-controls="pills-Upload" aria-selected="false">Recent Videos</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="pills-Size-tab" data-bs-toggle="tab" data-bs-target="#pills-Size" type="button" role="tab" aria-controls="pills-Size" aria-selected="false">Size</button>

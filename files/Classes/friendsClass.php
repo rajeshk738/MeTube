@@ -13,72 +13,148 @@ class FriendsClass{
                 return "";
             }
             else{
-                $html = "
-                <div><div class='table-responsive'><table class='table table-bordered table-striped table-hover'>
-                    <thead class='thead-light'>
+                $html="<div class='row' style='background-color:white;padding:20px;height:100%'>";
+
+                $html.="<div
+                style='width:100%;
+                border-radius: 5px;
+                background-color: white;
+                padding: 20px;Margin:5px'>
+                <form action='friend.php' method='POST'>
+                <label for='username'><b>Username</b></label>
+                    <select name='person'
+                    style='
+                    width: 100%;
+                    padding: 12px 20px;
+                    margin: 8px 0;
+                    display: inline-block;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    box-sizing: border-box;>'";
+                        while($row= $query->fetch(PDO::FETCH_ASSOC)){
+                            $html.= "<option value='" . $row['userName'] . "'>" . $row['userName'] . "</option>";
+                        }
+
+                $html.="</select>
+                <table style='width:100%;border:1px solid black;'>
+                <tr>
+                <th>
+                <div style='background-color:white'>
+                <h3 class='text-dark display-5 text-center'>Relationship</h3>
+                <label for='relation'>Relationship status:</label>
+                <select name='relation'
+                style='
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;>'>
+                     <option value='Friend'>Friend</option>
+                     <option value='Family'>Family</option>
+										 <option value='Favourite'>Favourite</option>
+                 </select>
+                <button type='submit' class= 'btn btn-secondary bt-sm'
+                style='width: 50%;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;' name='friendsButton' value='$userName'>Confirm</button></div></th>";
+
+                $html.="<th><div
+                style='background-color:red;
+                border-radius: 5px;
+                align-contents: right;
+                background-color: white;
+                padding: 20px;Margin:5px'>
+
+                <h3 class='text-dark display-5 text-center'>Block User</h3>
+                <label for='block'>Choose status type:</label>
+                <select name='block'
+                style='
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;>'>
+                     <option value='block'>Block</option>
+                     <option value='Unblock'>Un-blocked</option>
+                 </select>";
+
+                $html.="
+                <button type='submit' class= 'btn btn-secondary bt-sm'
+                style='width: 50%;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;' name='blockButton' value='$userName'>Confirm</button>
+                </div></th><tr><table>
+                </form>
+                </div>";
+
+               $html.="<table style='width:100%;border:1px solid black;'>
+               <tr>
+               <th><div
+                style='
+                border-radius: 5px;
+                align-contents: right;
+                background-color: white;
+                padding: 20px;Margin:5px'>
+                <table class='table table-bordered'>
+                    <thead>
                     <tr>
                     <th>Username</th>
                     <th>Relationship</th>
-                    <th>Block</th>
-
-                    </tr></thead>
-                    <tbody><tr><td>";
-
-                $html.= "<div style='padding-bottom:10px;'>
-
-                <form action='friend.php' method='POST'>
-                <select name='person'>";
-                while($row= $query->fetch(PDO::FETCH_ASSOC)){
-                    $html.= "<option value='" . $row['userName'] . "'>" . $row['userName'] . "</option>";
-                }
-
-                $html.= "</select></td>
-                <td>
-
-								<select name='relation'>
-									<option value='Friend'>Friend</option>
-										<option value='Family'>Family</option>
-								</select>
-
-                <button type='submit' class='btn btn-secondary' name='friendsButton' value='$userName'>Add</button>
-                </div></td>
-
-                <td><select name='block'>
-                    <option value='Blocked'>Block</option>
-                    <option value='Not Blocked'>Unblock</option>
-                </select>
-
-                <button type='submit' class='btn btn-secondary' name='blockButton' value='$userName'>Update</button>
-                </div></td>
-
-
-                </tr></form>
-                </tbody></table></div>
-                </div>
-                <div><div class='table-responsive'><table class='table table-bordered table-striped table-hover'>
-                    <thead class='thead-light'>
-                    <tr>
-                    <th>Username</th>
-                    <th>Current Relationship</th>
-                    <th>Block Status</th>
                     </tr>
                     </thead>
-                    <tbody>";
-
+                <tbody>";
                 $contactquery = $this->con->prepare("select * from contactList where userName = '$userName'");
                 $contactquery->execute();
 
                 while($row = $contactquery->fetch(PDO::FETCH_ASSOC)){
                     $contactUserName = $row['contactUserName'];
                     $contactType = $row['contactType'];
+
+                    $html.="
+                    <tr><td>$contactUserName</td>
+                        <td>$contactType</td>";
+                }
+                $html.= "</tbody></table></div></th><br>";
+
+                $html.="<th><div
+                style='
+                border-radius: 5px;
+                align-contents: right;
+                background-color: white;
+                padding: 20px;Margin:5px'>
+                <table class='table table-bordered'>
+                    <thead>
+                    <tr>
+                    <th>Username</th>
+                    <th>Block Status</th>
+                    </tr>
+                    </thead>
+                <tbody>";
+                $contactquery = $this->con->prepare("select * from contactList where userName = '$userName'");
+                $contactquery->execute();
+
+                while($row = $contactquery->fetch(PDO::FETCH_ASSOC)){
+                    $contactUserName = $row['contactUserName'];
                     $status = $row['status'];
 
                     $html.="
                     <tr><td>$contactUserName</td>
-                        <td>$contactType</td>
                         <td>$status</td></tr>";
                 }
-                $html.= "</tbody></table></div></div>";
+                $html.= "</tbody></table></div></th></tr></table>";
+
                 return $html;
             }
         }
@@ -86,6 +162,7 @@ class FriendsClass{
             echo"Some Error Occured: ".$e->getMessage();
         }
     }
+
     public function makefriends($userName, $friendName, $relationType){
     	echo "Relationship status with " . $friendName . " changed to ". $relationType;
 
@@ -100,7 +177,7 @@ class FriendsClass{
 	    	$query = $this->con->prepare("UPDATE contactList SET contactType = '$relationType' where userName='$userName' and contactUserName = '$friendName'");
 	        $query->execute();
     	}
-        header("location:friend.php");
+      header("location:friend.php");
     }
 
     public function blockfriends($userName, $friendName, $relationType){
@@ -117,7 +194,7 @@ class FriendsClass{
             $query = $this->con->prepare("INSERT INTO contactList(userName, contactUserName, status) VALUES('$userName', '$friendName', '$relationType')");
             $query->execute();
         }
-        header("location:friend.php");
+       header("location:friend.php");
     }
 
 }

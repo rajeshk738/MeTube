@@ -36,6 +36,7 @@ if($_FILES["mediaFile"]["error"] > 0 ) {
     exit;
 }
 
+
 $upload_file = $file_path.$filename; //urlencode work on GET, POST can contain special characters
 if(file_exists($upload_file))
 {

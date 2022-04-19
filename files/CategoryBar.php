@@ -44,7 +44,6 @@ if(isset($_GET["category"])){
 <div>
     <div style="display:flex; font-size: 18px; justify-content: flex-start">
         <div>
-
             <a class="btn btn-dark btn-sm" href='index.php?page=Home'>All</a>
             <a class="btn btn-secondary btn-sm" href='index.php?page=Home&category=Music'>Music</a>
             <a class="btn btn-secondary btn-sm" href='index.php?page=Home&category=Animal'>Animal</a>

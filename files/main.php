@@ -118,8 +118,7 @@ $loggedInUser = new UserDetails($con, $loggedInUserName);
       <li class='nav-item'>
         <a class='btn nav-link text-primary sign btn btn-outline-primary my-2 my-lg-1' href='signup.php'>Sign Up</a>
         </li>
-         </ul>
-            ";
+         </ul>";
 
 
         }
