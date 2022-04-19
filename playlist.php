@@ -1,3 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  background-color: white;
+  width: 50%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+</htm>
+
 <?php
 require_once("files/main.php");
 
@@ -10,23 +34,25 @@ if($query->rowCount()== 0){
 }
 else{
     $html .= "
-    <div><div class='table-responsive'><table class='table table-bordered table-striped table-hover'>
-            <thead class='thead-dark'>
+    <div><div class='table-responsive'><table>
+            <thead class='thead-light'>
             <tr>
             <th>Playlist Name</th>
+            <th>View Playlist</th>
+            <th>Delete Playlist</th>
             </tr>
-        
+
             </thead>
             <tbody><tr><td>
             <form action='playlist.php' method='POST'>";
-        
+
     $html.= "<select name='playlistname'>";
     while($row= $query->fetch(PDO::FETCH_ASSOC)){
         $html.= "<option value='" . $row['name'] . "'>" . $row['name'] . "</option>";
     }
     $html.="</select></td>
-    <td><button type='submit' class='btn btn-primary' name='viewplaylistButton' value='name'>View Playlist</button></td>
-    <td><button type='submit' class='btn btn-primary' name='deleteplaylistButton' value='name'>Delete Playlist</button></td>
+    <td><button type='submit' class='btn btn-secondary bt-sm' name='viewplaylistButton' value='name'>View</button></td>
+    <td><button type='submit' class='btn btn-secondary bt-sm' name='deleteplaylistButton' value='name'>Delete</button></td>
     </form>
     </div></tr></tbody>
     </table></div></div>";
@@ -35,12 +61,12 @@ else{
 }
 $html.="
     <div>
-    <p1>Create A New Playlist</p1>
+    <br/><br/>
     <form action='playlist.php' method='POST'>
-	        <input type='text' name ='playlistNamein' placeholder='Enter Name' required>
-            <button type='submit' class='btn btn-primary' name='createPlaylist' value='$loggedInUserName'>Create Playlist</button>
+	        <p1>Playlist Name: </p1><input type='text' name ='playlistNamein' placeholder='Enter playlist name ' required>
+            <button type='submit' class='btn btn-secondary bt-lg' name='createPlaylist' value='$loggedInUserName'>Create</button>
         </form>
-    
+
     </div>";
 echo $html;
 
@@ -71,12 +97,12 @@ if(isset($_POST["viewplaylistButton"])){
     $query->execute();
     echo"
     <div>
-    $playlistname
     <div class='table-responsive'>
-    <table class='table table-bordered table-striped table-hover'>
-    <thead class='thead-dark'>
+    <br/>
+    <table>
+    <thead class='thead-light'>
     <tr>
-        <th>Media Name</th>
+        <th>Playlist File</th>
     </tr>
     </thead>
     <tbody>";
