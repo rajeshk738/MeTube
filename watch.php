@@ -38,7 +38,7 @@
     </div>
     <div class= "suggestions">
         <div>
-            Recommended media for you:
+            Recommended media
         </div>
         <?php
             $mediaGrid= new MediaGrid($con);
