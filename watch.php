@@ -59,6 +59,7 @@
 
     </form>";
 
+
     $checkquery = $con->prepare("SELECT * from favouriteList where userName='$loggedInUserName' and videoId = '$mediaId'");
         $checkquery->execute();
         echo str_repeat("&nbsp;", 30);
