@@ -55,17 +55,12 @@ class MessageClass{
                       }
 
 
-        
-
                 $html.= "</select></p></p>
                 <p>Message: <p> <textarea rows = '10' cols='150' name = 'msg' placeholder='Enter your message here...' required></textarea
                 </p></p>
                 <button type='submit' class='btn btn-secondary btn-lg active' name='messageButton' value='$userName'>Send Message</button>
                 </form>
                 </div>";
-
-
-
 
 
                 $html.="
