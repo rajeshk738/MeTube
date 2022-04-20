@@ -1,6 +1,6 @@
 <?php
-require_once("files/connection.php");
-require_once("files/main.php");
+require_once("other/connection.php");
+require_once("other/main.php");
 $mediaId = (int)$_GET['Id'];
 if (isset($_POST["cancel"])) {
     header("location:watch.php?Id=$mediaId");

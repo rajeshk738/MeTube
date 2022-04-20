@@ -10,8 +10,8 @@
 </head></html>
 <?php
 
-require_once("files/main.php");
-require_once("files/Classes/messagingClass.php");
+require_once("other/main.php");
+require_once("Classes/messagingClass.php");
 
 ?>
 

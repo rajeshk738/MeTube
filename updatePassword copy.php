@@ -1,11 +1,11 @@
 <?php
-    require_once("files/main.php");
-    require_once("files/connection.php");
-    require_once("files/Classes/StatusMessage.php");
-    require_once("files/Classes/Account.php");
-    require_once("files/classes/FormSanitizer.php");
-    require_once("files/classes/SettingsFormProvider.php");
-    require_once("files/classes/User.php");
+    require_once("other/main.php");
+    require_once("other/connection.php");
+    require_once("Classes/StatusMessage.php");
+    require_once("Classes/Account.php");
+    require_once("Classes/FormSanitizer.php");
+    require_once("Classes/SettingsFormProvider.php");
+    require_once("Classes/User.php");
 
 
 
@@ -64,7 +64,7 @@ if(isset($_POST["savePasswordButton"])) {
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="files/css/stylen.css">
+<link rel="stylesheet" type="text/css" href="css/stylen.css">
 
 </head>
 <div class="settingsContainer column">

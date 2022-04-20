@@ -1,9 +1,9 @@
 <?php
-    require_once("files/connection.php");
-    require_once("files/main.php");
-    require_once("files/Classes/MediaPlayer.php");
-    require_once("files/Classes/MediaInfoSection.php");
-    require_once("files/Classes/CommentsClass.php");
+    require_once("other/connection.php");
+    require_once("other/main.php");
+    require_once("Classes/MediaPlayer.php");
+    require_once("Classes/MediaInfoSection.php");
+    require_once("Classes/CommentsClass.php");
 
     $commentsClass= new CommentsClass($con);
     if(!isset($_GET["Id"]) && !isset($_POST["postComment"])){

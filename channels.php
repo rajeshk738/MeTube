@@ -1,8 +1,8 @@
-<?php require_once("files/main.php");
+<?php require_once("other/main.php");
 $page = "MyChannel";
 $category = "";
 $sortby = "";
 $keywords = "";
 $mediaTitle = "";
-require("files/MediaOrder.php")
+require("other/MediaOrder.php")
 ?>

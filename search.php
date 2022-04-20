@@ -1,4 +1,4 @@
- <?php require_once("files/main.php") ?>
+ <?php require_once("other/main.php") ?>
 <?php
     if(!isset($_GET["page"])){
         //$keywords = $_GET["term"];
@@ -42,4 +42,4 @@
 </div>
 
 
-<?php require_once("files/MediaOrder.php") ?>
+<?php require_once("other/MediaOrder.php") ?>

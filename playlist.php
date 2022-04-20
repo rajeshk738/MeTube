@@ -23,7 +23,7 @@ tr:nth-child(even) {
 </htm>
 
 <?php
-require_once("files/main.php");
+require_once("other/main.php");
 
 $query = $con->prepare("SELECT * from playlist where userName = '$loggedInUserName'");
 $query->execute();

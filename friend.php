@@ -1,7 +1,7 @@
 <?php
-require_once("files/main.php");
-require_once("files/Classes/friendsClass.php");
-require_once("files/Classes/StatusMessage.php");
+require_once("other/main.php");
+require_once("Classes/friendsClass.php");
+require_once("Classes/StatusMessage.php");
 ?>
 
     <h3 class="text-dark display-8 text-center">Contacts List</h3>

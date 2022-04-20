@@ -1,5 +1,5 @@
-<?php 
-	require_once("files/main.php");
+<?php
+	require_once("other/main.php");
 	$vidId=(int)$_GET['Id'];
 	$checkquery = $con -> prepare("SELECT * from favouriteList where userName='$loggedInUserName' and videoId = '$vidId'");
 	$checkquery -> execute();

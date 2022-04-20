@@ -1,8 +1,8 @@
-<?php 
-require_once("files/connection.php"); 
-require_once("files/Classes/Account.php");
-require_once("files/Classes/StatusMessage.php");
-require_once("files/classes/FormSanitizer.php"); 
+<?php
+require_once("other/connection.php");
+require_once("Classes/Account.php");
+require_once("Classes/StatusMessage.php");
+require_once("Classes/FormSanitizer.php");
 
 $account = new Account($con);
 
@@ -17,7 +17,7 @@ if(isset($_POST["submitButton"])) {
 
     $password = FormSanitizer::sanitizeFormPassword($_POST["password"]);
     $password2 = FormSanitizer::sanitizeFormPassword($_POST["password2"]);
-    
+
     $wasSuccessful = $account->register($firstName, $lastName, $username, $email, $email2, $password, $password2);
 
     if($wasSuccessful) {
@@ -40,11 +40,11 @@ function getInputValue($name) {
     <title>meTube</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="files/css/stylen.css">
+    <link rel="stylesheet" type="text/css" href="css/stylen.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -54,7 +54,7 @@ function getInputValue($name) {
         <div class="column">
 
             <div class="header">
-                <img src="files/images/metube.png" title="logo" alt="Site logo">
+                <img src="images/metube.png" title="logo" alt="Site logo">
                 <h3>Sign Up</h3>
                 <span>to continue to meTube</span>
             </div>
@@ -62,7 +62,7 @@ function getInputValue($name) {
             <div class="loginForm">
 
                 <form action="signup.php" method="POST">
-                    
+
                 <?php echo $account->getError(StatusMessage::$firstNameCharacters); ?>
                 <input type="text" name="firstName" placeholder="First name" value="<?php getInputValue('firstName'); ?>" autocomplete="off" required>
 
@@ -78,7 +78,7 @@ function getInputValue($name) {
                 <?php echo $account->getError(StatusMessage::$emailTaken); ?>
                 <input type="email" name="email" placeholder="Email" autocomplete="off" value="<?php getInputValue('email'); ?>" required>
                 <input type="email" name="email2" placeholder="Confirm email" autocomplete="off" value="<?php getInputValue('email2'); ?>" required>
-                
+
                 <?php echo $account->getError(StatusMessage::$passwordsDoNotMatch); ?>
                 <?php echo $account->getError(StatusMessage::$passwordNotAlphanumeric); ?>
                 <?php echo $account->getError(StatusMessage::$passwordLength); ?>
@@ -87,16 +87,16 @@ function getInputValue($name) {
 
                 <input type="submit" name="submitButton" value="SUBMIT">
 
-                
+
                 </form>
 
 
             </div>
 
             <a class="signInMessage" href="signIn.php">Already have an account? Sign in here!</a>
-        
+
         </div>
-    
+
     </div>
 
 

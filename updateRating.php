@@ -1,5 +1,5 @@
 <?php
-require_once("files/main.php");
+require_once("other/main.php");
     if (isset($_POST["ratingButton"])){
     	$mediaId = $_POST["ratingButton"];
     	echo $mediaId;

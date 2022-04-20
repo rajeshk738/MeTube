@@ -1,7 +1,7 @@
-<?php 
-require_once("files/connection.php");
-require_once("files/Classes/UserAccount.php");
-require_once("files/Classes/StatusMessage.php");
+<?php
+require_once("other/connection.php");
+require_once("Classes/UserAccount.php");
+require_once("Classes/StatusMessage.php");
 
 $userAccount =new UserAccount($con);
 if(isset($_POST["loginButton"])){
@@ -24,15 +24,15 @@ if(isset($_POST["loginButton"])){
 <html lang="en" dir="ltr">
     <head>
         <meta charset="UTF-8">
-    
+
         <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
-    <body>    
+    <body>
         <div class="container">
             <div class="title">Login to MeTube</div>
-            <h4>or <a href="signup.php">sign up!</a></h4>  
+            <h4>or <a href="signup.php">sign up!</a></h4>
             <div class="content">
                 <form action="login.php" method="POST">
                     <div class="user-details">
@@ -43,7 +43,7 @@ if(isset($_POST["loginButton"])){
                             <input type="password" name="password" placeholder="Enter password" required>
                             <?php echo $userAccount->displayError(StatusMessage::$loginFailed); ?>
                         </div>
-        
+
                     <div class="button">
                         <button type="submit" name="loginButton">Login</button>
                     </div>

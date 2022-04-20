@@ -1,5 +1,5 @@
-<?php 
-    require_once("files/main.php");
+<?php
+    require_once("other/main.php");
 
     $playlistname =  $_POST['playlistname'];
     $vidId = $_POST['playlistButton'];

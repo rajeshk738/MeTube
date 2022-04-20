@@ -1,8 +1,8 @@
 <?php
-    require_once("files/main.php");
-    require_once("files/connection.php");
-    require_once("files/Classes/StatusMessage.php");
-    require_once("files/Classes/UserAccount.php");
+    require_once("other/main.php");
+    require_once("other/connection.php");
+    require_once("Classes/StatusMessage.php");
+    require_once("Classes/UserAccount.php");
 
 
     $emailResult = false;

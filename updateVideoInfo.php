@@ -1,6 +1,6 @@
 <?php
-require_once("files/connection.php");
-require_once("files/main.php");
+require_once("other/connection.php");
+require_once("other/main.php");
 
 $vedioId = (int)$_GET['Id'];
 $query = $con->prepare("SELECT * FROM media where id = '$vedioId'");

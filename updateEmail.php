@@ -1,8 +1,8 @@
 <?php
-    require_once("files/main.php");
-    require_once("files/connection.php");
-    require_once("files/Classes/StatusMessage.php");
-    require_once("files/Classes/UserAccount.php");
+    require_once("other/main.php");
+    require_once("other/connection.php");
+    require_once("Classes/StatusMessage.php");
+    require_once("Classes/UserAccount.php");
 
 
     $emailResult = false;
@@ -46,7 +46,7 @@ if(isset($_POST["saveDetailsButton"])) {
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="files/css/stylen.css">
+<link rel="stylesheet" type="text/css" href="css/stylen.css">
 
 </head>
 <div class="settingsContainer column">

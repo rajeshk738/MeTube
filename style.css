@@ -8,15 +8,15 @@
 body{
   height: 100vh;
   display: flex;
-  justify-content: center;    
+  justify-content: center;
   align-items: center;
   padding: 10px;
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
-#logo{ 
-	position:fixed; 
-	top:15px; 
-	left:20px; 
+#logo{
+	position:fixed;
+	top:15px;
+	left:20px;
 }
 
 
@@ -33,27 +33,27 @@ body{
 .container .title{
   font-size: 30px;
   font-weight: 500;
-  text-align: left;    
+  text-align: left;
   position: relative;
-  padding-top: 15px;        
+  padding-top: 15px;
 }
 form .user-details .input-box{
   margin-top: 15px;
   margin-bottom: 15px;
-  position: relative;     
+  position: relative;
 }
 form .input-box span.details{
   display: block;
-  font-weight: 500;    
+  font-weight: 500;
   margin-bottom: 5px;
-}   
+}
 .user-details .input-box input{
   height: 45px;
   width: 100%;
   outline: none;
-  font-size: 16px;    
+  font-size: 16px;
   border-radius: 5px;
-  padding-left: 15px;    
+  padding-left: 15px;
   border: 1px solid #ccc;
   border-bottom-width: 2px;
   transition: all 0.3s ease;
@@ -64,12 +64,12 @@ form .input-box span.details{
 }
  form .button{
    height: 45px;
-   margin: 25px 0px;   
+   margin: 25px 0px;
    text-align: center;
  }
  form .button button{
    height: 100%;
-   width: 100%; 
+   width: 100%;
    border-radius: 15px;
    border: none;
    color: #fff;

@@ -1,5 +1,5 @@
 <?php
-    require_once("files/main.php");
+    require_once("other/main.php");
 
     $vidId=$_POST['downloadButton'];
     //$query=$con->prepare("select filepath from videos where id='$vidId'");
