@@ -31,39 +31,105 @@ class MessagingClass{
             }
             else{
 
-                $html = "
-                <div><div class='table-responsive'>";
 
-                $html.= "<div style='padding-bottom:10px;'>
+              $html="<div class='row' style='background-color:white;padding:20px;height:100%'>";
 
-                <form action='message.php' method='POST'>
+              $html.="<div
+              style='width:100%;
+              border-radius: 5px;
+              background-color: white;
+              padding: 20px;Margin:5px'>
+              <form action='message.php' method='POST'>
+              <label for='username'><b>Username</b></label>
+                  <select name='recipient'
+                  style='
+                  width: 100%;
+                  padding: 12px 20px;
+                  margin: 8px 0;
+                  display: inline-block;
+                  border: 1px solid #ccc;
+                  border-radius: 4px;
+                  box-sizing: border-box;>'";
+                      while($row= $query->fetch(PDO::FETCH_ASSOC)){
+                          $html.= "<option value='" . $row['userName'] . "'>" . $row['userName'] . "</option>";
+                      }
 
-                <p> Username: </p><select name='recipient'>";
+
+                // $html = "
+                // <div><div class='table-responsive'>";
+                //
+                // $html.= "<div style='padding-bottom:10px;'>
+                //
+                // <form action='message.php' method='POST'>
+                //
+                // <p> Username: </p><select name='recipient'>";
 
 
-                while($row= $query->fetch(PDO::FETCH_ASSOC)){
-
-                    $html.= "<option value='" . $row['userName'] . "'>" . $row['userName'] . "</option>";
-
-
-            }
+            //     while($row= $query->fetch(PDO::FETCH_ASSOC)){
+            //
+            //         $html.= "<option value='" . $row['userName'] . "'>" . $row['userName'] . "</option>";
+            //
+            //
+            // }
 
                 $html.= "</select></p></p>
-                <p>Message: <p> <textarea rows = '10' cols='50' name = 'msg' placeholder='Enter your message here...' required></textarea
+                <p>Message: <p> <textarea rows = '10' cols='150' name = 'msg' placeholder='Enter your message here...' required></textarea
                 </p></p>
-                <button type='submit' class='btn btn-dark btn-lg active' name='messageButton' value='$userName'>Send Message</button>
+                <button type='submit' class='btn btn-secondary btn-lg active' name='messageButton' value='$userName'>Send Message</button>
                 </form>
                 </div>";
 
+
+
+
+//                 $html.="
+// <div>
+//
+//                 <form action='message.php' method='POST'>
+//                     <button type='submit' class='btn btn-secondary btn-sm active' name='inbox' value='$userName'>Inbox</button>
+//                     <button type='submit' class='btn btn-secondary btn-sm active' name='sent' value='$userName'>Sent</button>
+//                     </form>
+//
+//                 </div>";
+
+
                 $html.="
-                </div>
-
                 <form action='message.php' method='POST'>
-                    <button type='submit' class='btn btn-dark btn-sm active' name='inbox' value='$userName'>Inbox</button>
-                    <button type='submit' class='btn btn-dark btn-sm active' name='sent' value='$userName'>Sent</button>
-                    </form>
+                <table style='width:100%;border:1px solid black;'>
+                <tr>
+                <th>
+                <div style='background-color:white'>
 
+                <button type='submit' class= 'btn btn-secondary bt-sm active'
+                style='width: 100%;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;' name='inbox' value='$userName'>Inbox</button></div></th>";
+
+                $html.="<th><div
+                style='background-color:red;
+                border-radius: 5px;
+                align-contents: right;
+                background-color: white;
+                padding: 20px;Margin:5px'>";
+
+                $html.="
+                <button type='submit' class= 'btn btn-secondary bt-sm active'
+                style='width: 100%;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;' name='sent' value='$userName'>Sent</button>
+                </div></th><tr><table>
+                </form>
                 </div>";
+
+
                  return $html;
             }
         }

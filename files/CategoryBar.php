@@ -51,8 +51,6 @@ if(isset($_GET["category"])){
             <a class="btn btn-secondary btn-sm" href='index.php?page=Home&category=Travel'>Travel</a>
             <a class="btn btn-secondary btn-sm" href='index.php?page=Home&category=Education'>Education</a>
             <a class="btn btn-secondary btn-sm" href='index.php?page=Home&category=Human'>Human</a>
-            <a class="btn btn-secondary btn-sm" href='index.php?page=Home&category=Animal'>Animal</a>
-            <a class="btn btn-secondary btn-sm" href='index.php?page=Home&category=Sports'>Sports</a>
             <a class="btn btn-secondary btn-sm" href='index.php?page=Home&category=Cars'>Cars</a>
             <a class="btn btn-secondary btn-sm" href='index.php?page=Home&category=Bikes'>Bikes</a>
             <a class="btn btn-secondary btn-sm" href='index.php?page=Home&category=Food'>Food</a>
