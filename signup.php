@@ -1,22 +1,22 @@
 <?php
 require_once("other/connection.php");
-require_once("Classes/Account.php");
-require_once("Classes/StatusMessage.php");
-require_once("Classes/FormSanitizer.php");
+require_once("Classes/UserAccounts1.php");
+require_once("Classes/MessageStatus.php");
+require_once("Classes/ChangeForm.php");
 
 $account = new Account($con);
 
 if(isset($_POST["submitButton"])) {
-    $firstName = FormSanitizer::sanitizeFormString($_POST["firstName"]);
-    $lastName = FormSanitizer::sanitizeFormString($_POST["lastName"]);
+    $firstName = ChangeForm::sanitizeFormString($_POST["firstName"]);
+    $lastName = ChangeForm::sanitizeFormString($_POST["lastName"]);
 
-    $username = FormSanitizer::sanitizeFormUsername($_POST["username"]);
+    $username = ChangeForm::sanitizeFormUsername($_POST["username"]);
 
-    $email = FormSanitizer::sanitizeFormEmail($_POST["email"]);
-    $email2 = FormSanitizer::sanitizeFormEmail($_POST["email2"]);
+    $email = ChangeForm::sanitizeFormEmail($_POST["email"]);
+    $email2 = ChangeForm::sanitizeFormEmail($_POST["email2"]);
 
-    $password = FormSanitizer::sanitizeFormPassword($_POST["password"]);
-    $password2 = FormSanitizer::sanitizeFormPassword($_POST["password2"]);
+    $password = ChangeForm::sanitizeFormPassword($_POST["password"]);
+    $password2 = ChangeForm::sanitizeFormPassword($_POST["password2"]);
 
     $wasSuccessful = $account->register($firstName, $lastName, $username, $email, $email2, $password, $password2);
 
@@ -63,25 +63,25 @@ function getInputValue($name) {
 
                 <form action="signup.php" method="POST">
 
-                <?php echo $account->getError(StatusMessage::$firstNameCharacters); ?>
+                <?php echo $account->getError(MessageStatus::$firstNameCharacters); ?>
                 <input type="text" name="firstName" placeholder="First name" value="<?php getInputValue('firstName'); ?>" autocomplete="off" required>
 
-                <?php echo $account->getError(StatusMessage::$lastNameCharacters); ?>
+                <?php echo $account->getError(MessageStatus::$lastNameCharacters); ?>
                 <input type="text" name="lastName" placeholder="Last name" autocomplete="off" value="<?php getInputValue('lastName'); ?>" required>
 
-                <?php echo $account->getError(StatusMessage::$usernameCharacters); ?>
-                <?php echo $account->getError(StatusMessage::$usernameTaken); ?>
+                <?php echo $account->getError(MessageStatus::$usernameCharacters); ?>
+                <?php echo $account->getError(MessageStatus::$usernameTaken); ?>
                 <input type="text" name="username" placeholder="Username" autocomplete="off" value="<?php getInputValue('username'); ?>" required>
 
-                <?php echo $account->getError(StatusMessage::$emailsDoNotMatch); ?>
-                <?php echo $account->getError(StatusMessage::$emailInvalid); ?>
-                <?php echo $account->getError(StatusMessage::$emailTaken); ?>
+                <?php echo $account->getError(MessageStatus::$emailsDoNotMatch); ?>
+                <?php echo $account->getError(MessageStatus::$emailInvalid); ?>
+                <?php echo $account->getError(MessageStatus::$emailTaken); ?>
                 <input type="email" name="email" placeholder="Email" autocomplete="off" value="<?php getInputValue('email'); ?>" required>
                 <input type="email" name="email2" placeholder="Confirm email" autocomplete="off" value="<?php getInputValue('email2'); ?>" required>
 
-                <?php echo $account->getError(StatusMessage::$passwordsDoNotMatch); ?>
-                <?php echo $account->getError(StatusMessage::$passwordNotAlphanumeric); ?>
-                <?php echo $account->getError(StatusMessage::$passwordLength); ?>
+                <?php echo $account->getError(MessageStatus::$passwordsDoNotMatch); ?>
+                <?php echo $account->getError(MessageStatus::$passwordNotAlphanumeric); ?>
+                <?php echo $account->getError(MessageStatus::$passwordLength); ?>
                 <input type="password" name="password" placeholder="Password" autocomplete="off" required>
                 <input type="password" name="password2" placeholder="Confirm password" autocomplete="off" required>
 

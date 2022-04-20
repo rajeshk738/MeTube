@@ -1,14 +1,14 @@
 <?php
 require_once("other/connection.php");
-require_once("Classes/Account.php");
-require_once("Classes/StatusMessage.php");
-require_once("Classes/FormSanitizer.php");
+require_once("Classes/UserAccounts1.php");
+require_once("Classes/MessageStatus.php");
+require_once("Classes/ChangeForm.php");
 
 $account = new Account($con);
 if(isset($_POST["submitButton"])) {
 
-    $username = FormSanitizer::sanitizeFormUsername($_POST["username"]);
-    $password = FormSanitizer::sanitizeFormPassword($_POST["password"]);
+    $username = ChangeForm::sanitizeFormUsername($_POST["username"]);
+    $password = ChangeForm::sanitizeFormPassword($_POST["password"]);
 
     $wasSuccessful = $account->login($username, $password);
 
@@ -52,7 +52,7 @@ function getInputValue($name) {
             <div class="loginForm">
 
                 <form action="signIn.php" method="POST">
-                    <?php echo $account->getError(StatusMessage::$loginFailed); ?>
+                    <?php echo $account->getError(MessageStatus::$loginFailed); ?>
                     <input type="text" name="username" placeholder="Username" value="<?php getInputValue('username'); ?>"
                     required autocomplete="off">
                     <input type="password" name="password" placeholder="Password" required>

@@ -1,6 +1,6 @@
-<?php require_once("other/main.php") ?>
-<?php require_once("other/CategoryBar.php") ?>
-<?php require_once("other/MediaContent.php") ?>
+<?php require_once("other/home.php") ?>
+<?php require_once("other/categorySearchBar.php") ?>
+<?php require_once("other/mediaFiles.php") ?>
 
 <?php
     if (!isset($_GET['page'])) {
