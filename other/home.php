@@ -56,7 +56,7 @@ $loggedInUser = new UserDetailsInfo($con, $loggedInUserName);
         <span class="navbar-toggler-icon"></span>
     </button>
 
-
+    <!-- <img src="files/images/metube.png" title = 'logo' alt = "MeTube"/> -->
     <a class="navbar-brand" href="index.php?page=Home"></i> <img src="images/metube.png" title = 'logo' alt = "MeTube" width = 75px height = 30px></a>
     <button class="navbar-toggler btn " type="button" data-toggle="collapse" data-target="#navbar-collapse-content"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,6 +93,22 @@ $loggedInUser = new UserDetailsInfo($con, $loggedInUserName);
       </ul>";
 
         } else {
+        /*    echo "<ul class='navbar-nav'>
+
+        <li class='nav-item'>
+          <a class='style-scope ytd-button-renderer style-suggestive size-small' href='signup.php'>Sign Up <i class='far fa-user-plus' style='font-size:24px'></i> </a>
+        </li>
+
+        <li class='nav-item'>
+          <a class='style-scope ytd-button-renderer style-suggestive size-small' href='signIn.php'>Sign In<i class='fas fa-user' style='font-size:24px'></i></a>
+        </li>
+
+
+      </ul>";
+
+         */
+
+
 
        echo "<ul class='navbar-nav ml-auto'>
       <li class='nav-item'>
@@ -115,38 +131,41 @@ $loggedInUser = new UserDetailsInfo($con, $loggedInUserName);
     <div class="sidebar-menu">
         <ul style="list-style-type:none;">
             <li class='nav-item'>
-                <a href='index.php?page=Home'>Home</a>
+            
+                <a href='index.php?page=Home' class ='btn btn-secondary bt-sm'>Home</a><br><br>
             </li>
 
             <?php
             if ($loggedInUserName != "") {
                 echo "
                 <li class='nav-item'>
-                              <a href='pwdUpdate.php'>Update Password</a>
+                              <a href='pwdUpdate.php' class ='btn btn-secondary bt-sm'>Update Password</a><br><br>
                                 </li>
                         <li class='nav-item'>
-                              <a href='emailUpdate.php'>Update Email</a>
+                              <a href='emailUpdate.php' class ='btn btn-secondary bt-sm'>Update Email</a><br><br>
                                 </li>
                     <li class='nav-item'>
-                      <a href='playlistVideos.php?id='>My Playlist</a>
+                      <a href='playlistVideos.php?id=' class ='btn btn-secondary bt-sm'>My Playlist</a><br><br>
                     </li>
                     <li class='nav-item'>
-                      <a href='myFav.php'>My Favourites</a>
+                      <a href='myFav.php' class ='btn btn-secondary bt-sm'>My Favourites</a><br><br>
                     </li>
                         <li class='nav-item'>
-                        <a href='contactFriend.php'>Contacts</a>
+                        <a href='contactFriend.php' class ='btn btn-secondary bt-sm'>Contacts</a><br><br>
                       </li>
                       <li class='nav-item'>
-                        <a href='messageSection.php'>Messages</a>
+                        <a href='messageSection.php' class ='btn btn-secondary bt-sm'>Messages</a><br><br>
                       </li>
                       <li class='nav-item'>
-                      <a href='discuss.php'>Discussion</a>
+                      <a href='discuss.php' class ='btn btn-secondary bt-sm'>Discussion</a><br><br>
                     </li>";
+
+
 
             }
             ?>
             <li class='nav-item'>
-                <a href='wordSearchCloud.php'>Word Cloud Search</a>
+                <a href='wordSearchCloud.php' class ='btn btn-secondary bt-sm'>Word Cloud Search</a>
             </li>
         </ul>
     </div>
