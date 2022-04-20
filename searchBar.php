@@ -1,7 +1,6 @@
  <?php require_once("other/home.php") ?>
 <?php
     if(!isset($_GET["page"])){
-        //$keywords = $_GET["term"];
         header("location:searchBar.php?page=Search&keywords=".$_GET["keywords"]);
     }
 
@@ -19,8 +18,6 @@
     else {
       $mediaTitle = "No search Results, Use keywords to Search";
     }
-
-    //$mediaTitle = "Search results for '".$_GET["keywords"]."'";
     if(isset($_GET["size"])){
         $size = $_GET["size"];
     } else {

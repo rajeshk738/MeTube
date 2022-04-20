@@ -1,19 +1,6 @@
 <?php
 class ChangeFormSettings {
 
-    // public function createUserDetailsForm() {
-    //     $email = $this->createEmailInput($emailId);
-    //     $newemail = $this->createEmailInput($newemailId);
-    //     $saveButton = $this->createSaveUserDetailsButton();
-
-    //     return "<form action='pwdUpdate.php' method='POST' enctype='multipart/form-data'>
-    //                 <span class='title'>Update Email</span>
-    //                 $email
-    //                 $newemail
-    //                 $saveButton
-    //             </form>";
-    // }
-
     public function createPasswordForm() {
         $oldPasswordInput = $this->createPasswordInput("oldPassword", "Old password");
         $newPassword1Input = $this->createPasswordInput("newPassword", "New password");

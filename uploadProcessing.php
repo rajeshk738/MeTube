@@ -16,7 +16,7 @@ $videoExts = array("video/mp4");
 $imageExts = array("image/pjpeg", "image/gif", "image/jpeg");
 $audioExts = array("audio/mp3", "audio/wma");
 $mediaId = 0;
-//$extension = pathinfo($_FILES['mediaFile']['name'], PATHINFO_EXTENSION);
+
 $extension = $_FILES["mediaFile"]["type"];
 $mediaType = explode('/', $extension);
 $mediaType = $mediaType[0];
@@ -24,7 +24,7 @@ $size = $_FILES['mediaFile']['size'];
 $username = $_SESSION["loggedinUser"];
 $file_path = 'uploads/'.$username.'/';
 
-//if user upload folder does not exist, create the folder
+
 if (!file_exists($file_path)) {
     mkdir($file_path);
     chmod($file_path, 0755);
@@ -37,11 +37,10 @@ if($_FILES["mediaFile"]["error"] > 0 ) {
 }
 
 
-$upload_file = $file_path.$filename; //urlencode work on GET, POST can contain special characters
+$upload_file = $file_path.$filename;
 if(file_exists($upload_file))
 {
     echo "File".$upload_file." already exists";
-   // header("Refresh: 200;uploadMedia.php?file_exist=true");
     header("location:uploadMedia.php?file_exist=true");
     exit;
 }
@@ -54,7 +53,6 @@ try{
     $query = $con->prepare("INSERT INTO media(mediaType, title, description, category, privacy, filepath, file_extension, mediaSize, uploadedBy, views, keywords)
                     VALUES('$mediaType', '$title', '$description','$category','$visibility', '$upload_file', '$extension', '$size','$username', 0, '$keywords')");
     $query->execute();
-    //get the media id just added to database
     $query = $con->prepare("SELECT id FROM media order by id desc limit 1");
     $query->execute();
 
@@ -64,7 +62,6 @@ try{
     if ($keywords != "") {
         for ($i = 0; $i < count($keyword_arr); $i++) {
             $key = $keyword_arr[$i];
-            //echo "$key"."<br>";
             $query = $con->prepare("INSERT INTO keywords(keyword, media_id) VALUES('$key', '$mediaId')");
             $query->execute();
         }

@@ -23,7 +23,6 @@ class MediaFiles{
         $title = $this->media->getTitle();
         $userName = $this->media->getUploadedBy();
         $views = $this->media->getViews();
-        //$description = $this->media->getDescription();
         $keywords = $this->media->getKeywords();
         $uploaddate = $this->media->getUploadDate();
         $size = $this->media->getMediasize();

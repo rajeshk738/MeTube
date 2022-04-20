@@ -56,7 +56,7 @@ $loggedInUser = new UserDetailsInfo($con, $loggedInUserName);
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- <img src="files/images/metube.png" title = 'logo' alt = "MeTube"/> -->
+
     <a class="navbar-brand" href="index.php?page=Home"></i> <img src="images/metube.png" title = 'logo' alt = "MeTube" width = 75px height = 30px></a>
     <button class="navbar-toggler btn " type="button" data-toggle="collapse" data-target="#navbar-collapse-content"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,22 +93,6 @@ $loggedInUser = new UserDetailsInfo($con, $loggedInUserName);
       </ul>";
 
         } else {
-        /*    echo "<ul class='navbar-nav'>
-
-        <li class='nav-item'>
-          <a class='style-scope ytd-button-renderer style-suggestive size-small' href='signup.php'>Sign Up <i class='far fa-user-plus' style='font-size:24px'></i> </a>
-        </li>
-
-        <li class='nav-item'>
-          <a class='style-scope ytd-button-renderer style-suggestive size-small' href='signIn.php'>Sign In<i class='fas fa-user' style='font-size:24px'></i></a>
-        </li>
-
-
-      </ul>";
-
-         */
-
-
 
        echo "<ul class='navbar-nav ml-auto'>
       <li class='nav-item'>
@@ -158,8 +142,6 @@ $loggedInUser = new UserDetailsInfo($con, $loggedInUserName);
                       <li class='nav-item'>
                       <a href='discuss.php'>Discussion</a>
                     </li>";
-
-
 
             }
             ?>

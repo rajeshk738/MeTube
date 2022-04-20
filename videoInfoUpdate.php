@@ -29,7 +29,6 @@ $row = $query->fetch(PDO::FETCH_ASSOC);
 $keywords.=$row["keywords"];
 
 $actionString = "processVideoUpdate.php?Id=".$vedioId;
-//echo "$actionString";
 ?>
 
 <form action=<?php echo "$actionString" ?> method="POST" enctype="multipart/form-data">
@@ -47,7 +46,7 @@ $actionString = "processVideoUpdate.php?Id=".$vedioId;
         <textarea class="form-control" name="keywords" placeholder="Enter keywords list, each keyword separated by ','" id="keywords" ><?php echo $keywords ?></textarea>
     </div>
     <br>
-    <!--    <p> Select a category</p>-->
+
     <label class="form-label" for="category">
         Select a category:
     </label>

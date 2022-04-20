@@ -13,34 +13,6 @@
         $emailResult=$userAccount->updateEmail($email, $loggedInUserName);
     }
 
-
-
-/*
-if(isset($_POST["saveDetailsButton"])) {
-    $account = new Account($con);
-
-    $email = ChangeForm::sanitizeFormString($_POST["emailId"]);
-    $userName=$loggedInUser->getUserName();
-    if($account->updateDetails($userName, $email)) {
-        $detailsMessage = "<div class='alert alert-success'>
-                                <strong>SUCCESS!</strong> Details updated successfully!
-                            </div>";
-    }
-    else {
-        $errorMessage = $account->getFirstError();
-
-        if($errorMessage == "") $errorMessage = "Something went wrong";
-
-        $detailsMessage = "<div class='alert alert-danger'>
-                                <strong>ERROR!</strong> $errorMessage
-                            </div>";
-    }
-}
-*/
-
-
-
-
 ?>
 
 <!DOCTYPE html>

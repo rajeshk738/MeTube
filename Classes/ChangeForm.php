@@ -21,8 +21,6 @@ class ChangeForm {
     }
 
     public static function sanitizeFormEmail($inputText) {
-        //$inputText = strip_tags($inputText);
-        //$inputText = str_replace(" ", "", $inputText);
         return $inputText;
     }
 

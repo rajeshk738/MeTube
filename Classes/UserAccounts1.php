@@ -41,30 +41,6 @@ class Account {
         }
     }
 
-    // public function updateDetails($un,$em, $newem) {
-
-
-    //     if($this->validateOldEmail($em, $un)) {
-    //         $q = ("UPDATE userAccounts SET emailId= '$newem' WHERE userName= '$un'");
-    //         return $con->query($q);
-    //     }
-    //     else {
-    //         return false;
-    //     }
-    // }
-
-    // private function validateOldEmail($em, $un) {
-
-    //     $c = "SELECT * FROM userAccounts WHERE emailId= '$em' AND userName= ''$un'";
-    //     $res = $con->query($c);
-
-    //     if($res->rowCount() != 0){
-    //       return true;
-    //     }
-
-    //     return false;
-    // }
-
     public function updatePassword($oldPw, $pw, $pw2, $un) {
         $this->validateOldPassword($oldPw, $un);
         $this->validatePasswords($pw, $pw2);

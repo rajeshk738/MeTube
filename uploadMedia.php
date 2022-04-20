@@ -27,7 +27,7 @@ require_once("other/home.php");
         <textarea class="form-control" name="keywords" placeholder="Enter keywords of the media file, each keyword separated by ','" id="keywords"></textarea>
     </div>
     <br>
-<!--    <p> Select a category</p>-->
+
     <label class="form-label" for="category">
         Select a category:
     </label>

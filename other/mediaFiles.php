@@ -27,15 +27,7 @@
 <div class='videoSection'>
 
     <?php
-//    if($loggedInUserName==""){
-//        $mediaGrid= new MediaGrid($con);
-//        echo $mediaGrid->create(null, "All Media", $loggedInUserName);
-//    }
-//    else{
         $mediaGrid= new MediaGridFile($con);
-        //echo "<div> '$category' '$sortby'</div>";
-
         echo $mediaGrid->create($page, $category, $keywords, $sortby, $loggedInUserName, $size);
-    //}
     ?>
 </div>

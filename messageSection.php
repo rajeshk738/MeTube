@@ -17,7 +17,6 @@ require_once("Classes/MessageClass.php");
 
 <div class='k' style='padding-top:25px;'>
 <div>
-    <!-- <h2 class="text-dark display-3 text-center">Messages</h2> -->
     <p class="text-dark display-5 text-left"><b>Compose Message</b></p>
 
     <?php

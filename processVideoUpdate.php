@@ -20,14 +20,12 @@ try{
                                  SET title = '$title', description = '$description', category = '$category', privacy = '$visibility', keywords = '$keywords'
                                  WHERE id = '$mediaId'");
     $query->execute();
-    //get the media id just added to database
     $query = $con->prepare("DELETE FROM keywords WHERE media_id = '$mediaId'");
     $query->execute();
 
     if ($keywords != "") {
         for ($i = 0; $i < count($keyword_arr); $i++) {
             $key = $keyword_arr[$i];
-            //echo "$key"."<br>";
             $query = $con->prepare("INSERT INTO keywords(keyword, media_id) VALUES('$key', '$mediaId')");
             $query->execute();
         }
